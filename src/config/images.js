@@ -2,7 +2,8 @@
  * @copyRight by iHealthScreen
  */
 const images = {
-  // logo: require('src/images/logo.png'),
+  auth_background: require('../assets/img/background.png'),
+  app_icon: require('../assets/icon/app_icon.png'),
   // heartLogo: require('src/images/heart.png'),
   // diabetes: require('src/images/diabetes-logo.png'),
   // stroke: require('src/images/stroke-logo.png'),

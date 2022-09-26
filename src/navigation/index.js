@@ -11,7 +11,7 @@ export default AppNavigator = () => {
   if (!auth.token) {
     return <AuthStack />;
   } else {
-    return auth.user.userType === api.USER_TYPE.DOCTOR ? (
+    return auth?.user.userType === api.USER_TYPE.DOCTOR ? (
       <>
         <DoctorStack />
       </>
