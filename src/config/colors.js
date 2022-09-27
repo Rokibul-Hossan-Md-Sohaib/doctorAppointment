@@ -5,17 +5,11 @@ const colors = {
   WHITE: '#ffffff',
   BLACK: '#2c2c2c',
   TOMATO: '#eb3e32',
-  PALE_GREY: '#f8f8fa',
-  LIGHT_BLUE_GREY: '#aeb6c1',
-  DARKISH_GREEN: '#004994',
-  DARKISH_GREEN_STATUS: '#00590e',
-  CHARCOAL_GREY: '#363f4d',
-  CLOUDY_BLUE: '#b7c1cf',
-  DODGER_BLUE: '#43acff',
-  CORN_FLOWER: '#6c63ff',
+  LIGHT_GRAY: '#e0e0e0',
+  GRAY: '#818181',
   SUCCESS: '#42ba96',
-  PRIMARY: '#43acff',
-  SECONDARY: '#004994',
+  PRIMARY: '#0AA0C7',
+  SECONDARY: '#00CACE',
   getRandomColor: () => {
     var letters = '012345'.split('');
     var color = '#';
