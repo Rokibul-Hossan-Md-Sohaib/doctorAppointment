@@ -31,7 +31,7 @@ export default React.forwardRef((props, ref) => {
           props.style,
         ]}
         placeholder={props?.placeholder}
-        placeholderTextColor={'#72777A'}
+        placeholderTextColor={'#BDBDBD'}
         onChangeText={props?.onChangeText}
         value={props?.value}
         maxLength={props?.maxLength}

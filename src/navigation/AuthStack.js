@@ -17,18 +17,18 @@ const Stack = createStackNavigator();
 export default function AuthStack() {
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName={routes.LOGIN}>
-        <Stack.Screen
-          name={routes.LOGIN}
-          component={Login}
-          options={{headerShown: false}}
-        />
+      <Stack.Navigator
+        initialRouteName={routes.VERIFICATION}
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name={routes.LOGIN} component={Login} />
         <Stack.Screen name={routes.SIGNUP} component={Signup} />
-        <Stack.Screen name={routes.VERIFICATION} component={Verification} />
         <Stack.Screen
-          name={routes.FORGET_PASSWORD}
+          name={routes.FORGOT_PASSWORD}
           component={ForgetPassword}
         />
+        <Stack.Screen name={routes.VERIFICATION} component={Verification} />
       </Stack.Navigator>
     </NavigationContainer>
   );

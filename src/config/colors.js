@@ -8,8 +8,9 @@ const colors = {
   LIGHT_GRAY: '#e0e0e0',
   GRAY: '#818181',
   SUCCESS: '#42ba96',
-  PRIMARY: '#0AA0C7',
-  SECONDARY: '#00CACE',
+  PRIMARY: '#0095D9',
+  SECONDARY: '#00B3E9',
+  INFO: '#FAAC58',
   getRandomColor: () => {
     var letters = '012345'.split('');
     var color = '#';

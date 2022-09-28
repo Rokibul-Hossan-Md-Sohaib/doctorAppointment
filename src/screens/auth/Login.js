@@ -3,11 +3,9 @@
  */
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-// import LoginView from './dynamicLoginView';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NavigationService from '../../services/NavigationService';
 import _ from 'lodash';
-
 import {
   ActivityIndicator,
   View,
@@ -24,7 +22,6 @@ import {Button, GradientButton} from '../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
-const ratio = win.width / win.height;
 const passwordRef = React.createRef();
 const goToPassword = event => {
   passwordRef.current.focus();
@@ -85,11 +82,12 @@ export default function Login({navigation}) {
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
+              alignItems: 'center',
               height: 40,
               marginVertical: 40,
             }}>
             <View style={{marginRight: 5}}>
-              <Image style={{height: 30, width: 34}} source={images.app_icon} />
+              <Image style={{height: 30, width: 36}} source={images.app_icon} />
             </View>
             <Text
               style={{
@@ -117,7 +115,7 @@ export default function Login({navigation}) {
                 SEE A DOCTOR NOW!
               </Text>
             </View>
-            <View style={{marginVertical: 5}}>
+            <View style={{}}>
               <Text
                 style={{
                   color: colors.GRAY,
@@ -127,7 +125,7 @@ export default function Login({navigation}) {
                 Login to your MyHealth account
               </Text>
             </View>
-            <View style={{marginVertical: 1}}>
+            <View>
               <Text
                 style={{
                   color: colors.GRAY,
@@ -187,8 +185,8 @@ export default function Login({navigation}) {
           /> */}
             <GradientButton
               onPress={signInPress}
-              cl1="#3CABD0"
-              cl2="#32D4D7"
+              cl1={colors.PRIMARY}
+              cl2={colors.SECONDARY}
               style={{
                 height: 48,
                 marginHorizontal: 20,
@@ -201,19 +199,40 @@ export default function Login({navigation}) {
               text="Sign in"
             />
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() => {
+                navigation?.navigate(routes.FORGOT_PASSWORD);
+              }}
               style={{
-                alignItems: 'center',
+                alignItems: 'flex-end',
                 justifyContent: 'center',
                 marginVertical: 15,
+                marginRight: 30,
               }}>
               <Text
                 style={{
-                  color: colors.PRIMARY,
+                  color: colors.SECONDARY,
+                  fontSize: 16,
+                  fontFamily: fonts.regular,
+                }}>
+                Forget password
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation?.navigate(routes.SIGNUP);
+              }}
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginVertical: 10,
+              }}>
+              <Text
+                style={{
+                  color: colors.SECONDARY,
                   fontSize: 20,
                   fontFamily: fonts.regular,
                 }}>
-                Do not have an account?{' '}
+                Do not have an account?
               </Text>
             </TouchableOpacity>
           </View>
