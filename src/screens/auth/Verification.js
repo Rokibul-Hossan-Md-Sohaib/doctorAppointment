@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   cell: {
     textAlign: 'center',
-    lineHeight: 58,
+    lineHeight: 53,
     fontSize: 30,
 
     color: colors.GRAY,
