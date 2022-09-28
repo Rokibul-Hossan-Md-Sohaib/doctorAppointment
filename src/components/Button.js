@@ -67,9 +67,7 @@ const GradientButton = props => {
       <LinearGradient
         locations={[0.5, 1]}
         colors={
-          props?.disabled
-            ? [colors.GRAY, colors.LIGHT_GRAY]
-            : [props.cl1, props.cl2]
+          props?.disabled ? [colors.GRAY, colors.GRAY] : [props.cl1, props.cl2]
         }
         style={{
           justifyContent: 'center',

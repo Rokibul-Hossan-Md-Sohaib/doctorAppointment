@@ -100,7 +100,7 @@ export default function Login({navigation}) {
           </View>
           <View style={{flex: 1, alignItems: 'center', marginBottom: 20}}>
             <Image
-              style={{width: 300, height: win.height / 4}}
+              style={{width: 300, height: win.height / 5}}
               resizeMode="contain"
               source={images.login_logo}
             />
@@ -205,8 +205,8 @@ export default function Login({navigation}) {
               style={{
                 alignItems: 'flex-end',
                 justifyContent: 'center',
-                marginVertical: 15,
                 marginRight: 30,
+                marginTop: 16,
               }}>
               <Text
                 style={{
@@ -224,7 +224,7 @@ export default function Login({navigation}) {
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginVertical: 10,
+                marginTop: 16,
               }}>
               <Text
                 style={{

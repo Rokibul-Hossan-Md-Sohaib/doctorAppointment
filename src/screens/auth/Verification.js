@@ -101,12 +101,23 @@ export default function Verification({navigation, route}) {
               keyboardType="number-pad"
               textContentType="oneTimeCode"
               renderCell={({index, symbol, isFocused}) => (
-                <Text
-                  key={index}
-                  style={[styles.cell, isFocused && styles.focusCell]}
-                  onLayout={getCellOnLayoutHandler(index)}>
-                  {symbol || (isFocused ? <Cursor /> : null)}
-                </Text>
+                <View
+                  style={{
+                    width: 55,
+                    height: 55,
+                    backgroundColor: colors.WHITE,
+                    margin: 4,
+                    borderWidth: 2,
+                    borderColor: colors.SECONDARY,
+                    borderRadius: 10,
+                  }}>
+                  <Text
+                    key={index}
+                    style={[styles.cell, isFocused && styles.focusCell]}
+                    onLayout={getCellOnLayoutHandler(index)}>
+                    {symbol || (isFocused ? <Cursor /> : null)}
+                  </Text>
+                </View>
               )}
             />
           </View>
@@ -164,30 +175,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  inputContainerStyle: {
-    marginTop: 16,
-    marginHorizontal: 8,
-  },
-  inputFieldStyle: {
-    borderWidth: 1,
-    borderColor: colors.LIGHT_GRAY,
-    borderRadius: 8,
-  },
   title: {textAlign: 'center', fontSize: 30},
   codeFieldRoot: {
     marginTop: 16,
   },
   cell: {
-    width: 60,
-    lineHeight: 60,
     textAlign: 'center',
-    backgroundColor: colors.WHITE,
-    color: colors.PRIMARY,
-    margin: 4,
-    height: 60,
-    fontSize: 25,
+    lineHeight: 58,
+    fontSize: 30,
+
+    color: colors.GRAY,
   },
   focusCell: {
-    borderColor: colors.SUCCESS,
+    borderColor: colors.PRIMARY,
   },
 });

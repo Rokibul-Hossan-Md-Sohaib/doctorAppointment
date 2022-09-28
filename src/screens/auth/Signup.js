@@ -83,7 +83,8 @@ export default function SignUp({navigation}) {
       !_.isEmpty(username) &&
       !_.isEmpty(password) &&
       !_.isEmpty(name) &&
-      !_.isEmpty(confPassword)
+      !_.isEmpty(confPassword) &&
+      _.isEqual(password, confPassword)
     );
   };
   //
