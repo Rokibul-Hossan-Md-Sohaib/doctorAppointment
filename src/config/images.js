@@ -6,6 +6,8 @@ const images = {
   app_icon: require('../assets/icon/app_icon.png'),
   login_logo: require('../assets/icon/signin_logo.png'),
   patient_info: require('../assets/img/patient_info.png'),
+  male_icon: require('../assets/icon/male.png'),
+  female_icon: require('../assets/icon/female.png'),
   // heartLogo: require('src/images/heart.png'),
   // diabetes: require('src/images/diabetes-logo.png'),
   // stroke: require('src/images/stroke-logo.png'),

@@ -21,18 +21,17 @@ import InputField from '../../../components/InputField';
 import {Button, GradientButton} from '../../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {genderList} from '../../../utils';
+import {isLogBoxErrorMessage} from 'react-native/Libraries/LogBox/Data/LogBoxData';
 const win = Dimensions.get('window');
 const passwordRef = React.createRef();
 const goToPassword = event => {
   passwordRef.current.focus();
 };
-// const
 export default function PatientInfo({navigation}) {
-  // const dispatch = useDispatch();
-  // const loginState = useSelector(state => state.login);
   const [bInit, setBInit] = useState(false);
   const [age, setAge] = useState('');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('male');
   //
   useEffect(() => {
     return () => {};
@@ -63,13 +62,13 @@ export default function PatientInfo({navigation}) {
     return (
       <PatientWrapper>
         <KeyboardAwareScrollView style={{flex: 1}}>
-          <View style={{flex: 1, alignItems: 'center', marginBottom: 20}}>
+          <View style={{flex: 1, alignItems: 'center', marginTop: 60}}>
             <Image
               style={{width: 300, height: win.height / 5}}
               resizeMode="contain"
               source={images.patient_info}
             />
-            <View style={{marginVertical: 10}}>
+            <View style={{marginTop: 26}}>
               <Text
                 style={{
                   color: colors.PRIMARY,
@@ -80,7 +79,7 @@ export default function PatientInfo({navigation}) {
                 PLEASE UPDATE YOUR INFO
               </Text>
             </View>
-            <View style={{}}>
+            <View style={{marginTop: 16}}>
               <Text
                 style={{
                   color: colors.GRAY,
@@ -101,7 +100,7 @@ export default function PatientInfo({navigation}) {
               </Text>
             </View>
           </View>
-          <View style={{flex: 1}}>
+          <View style={{flex: 1, marginTop: 16}}>
             <InputField
               placeholder={'Age'}
               value={age}
@@ -114,6 +113,41 @@ export default function PatientInfo({navigation}) {
               containerStyle={[styles.inputContainerStyle]}
               returnKeyType="next"
             />
+            <View style={{flexDirection: 'row'}}>
+              {genderList.map(item => (
+                <Button
+                  onPress={() => {
+                    setGender(item.val);
+                  }}
+                  style={{
+                    flex: 1,
+                    marginTop: 16,
+                    height: 48,
+                    borderRadius: 8,
+                    borderWidth: 1,
+                    borderColor:
+                      gender === item.val ? colors.PRIMARY : colors.LIGHT_GRAY,
+                    backgroundColor: '#fff',
+                  }}
+                  titleStyle={{
+                    fontSize: 20,
+                    color: '#0098DA',
+                    alignItems: 'flex-start',
+                    fontFamily: fonts.regular,
+                    textAlign: 'left',
+                  }}
+                  title={item.name}
+                  leftIconStyle={{
+                    width: 24,
+                    height: 24,
+                    marginHorizontal: 16,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  leftIcon={item.img}
+                />
+              ))}
+            </View>
 
             <GradientButton
               onPress={onSubmit}
@@ -137,7 +171,7 @@ export default function PatientInfo({navigation}) {
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginTop: 16,
+                marginTop: 80,
               }}>
               <Text
                 style={{

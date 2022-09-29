@@ -24,9 +24,7 @@ const Button = ({
       style={[styles.container, style]}
       {...rest}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        {leftIcon && (
-          <Image style={[styles.rightIcon, leftIconStyle]} source={leftIcon} />
-        )}
+        {leftIcon && <Image style={[leftIconStyle]} source={leftIcon} />}
         <Text
           style={{
             ...styles.title,
@@ -85,7 +83,6 @@ const GradientButton = props => {
 };
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
@@ -93,11 +90,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   title: {
-    fontFamily: fonts.bold,
     flex: 1, //new
     fontSize: 16,
     letterSpacing: 0.41,
-    textAlign: 'center',
     color: '#ffffff',
   },
   icon: {

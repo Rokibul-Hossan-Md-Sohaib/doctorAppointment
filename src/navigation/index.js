@@ -9,7 +9,8 @@ export default AppNavigator = () => {
   const auth = /* useSelector(state => state.login.data); */ {token: ''};
 
   if (!auth.token) {
-    return <AuthStack />;
+    // return <AuthStack />;
+    return <PatientStack />;
   } else {
     return auth?.user.userType === api.USER_TYPE.DOCTOR ? (
       <>
