@@ -18,7 +18,7 @@ export default function AuthStack() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        initialRouteName={routes.VERIFICATION}
+        initialRouteName={routes.LOGIN}
         screenOptions={{
           headerShown: false,
         }}>

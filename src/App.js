@@ -14,6 +14,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 Icon.loadFont();
 import 'react-native-gesture-handler';
 import {enableScreens} from 'react-native-screens';
+import {ProvideLocalization} from './hooks/use-locale';
+
 //
 import Navigator from './navigation';
 import store from './rdx/reducers';
@@ -31,9 +33,11 @@ const theme = {
 export default function App() {
   if (Platform.OS === 'ios') {
     return (
-      <Provider store={store}>
-        <Navigator />
-      </Provider>
+      <ProvideLocalization>
+        <Provider store={store}>
+          <Navigator />
+        </Provider>
+      </ProvideLocalization>
     );
   } else {
     return (
@@ -42,7 +46,9 @@ export default function App() {
           backgroundColor={colors.DARKISH_GREEN}
           barStyle="light-content"
         />
-        <Navigator />
+        <ProvideLocalization>
+          <Navigator />
+        </ProvideLocalization>
       </Provider>
     );
   }

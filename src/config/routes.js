@@ -8,6 +8,7 @@ const Routes = {
   LOGIN: 'Login',
   SIGNUP: 'Signup',
   INTRO: 'Intro',
+  FIRSTPAGE: 'Info',
   VERIFICATION: 'VERIFICATION',
   FORGOT_PASSWORD: 'Forgot Password',
   RESET_PASSWORD: 'Reset Password',

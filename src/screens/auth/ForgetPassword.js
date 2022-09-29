@@ -21,8 +21,10 @@ import {Button, GradientButton} from '../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
+import {useLocale} from '../../hooks';
 
 export default function ForgetPassword({navigation}) {
+  const {translations} = useLocale();
   const [username, setUsername] = useState('');
   //
   useEffect(() => {
@@ -33,8 +35,9 @@ export default function ForgetPassword({navigation}) {
     return !_.isEmpty(username);
   };
   //
-  const signInPress = () => {
+  const onSubmit = () => {
     try {
+      navigation?.navigate(routes.VERIFICATION, {username: username});
     } catch (err) {}
   };
   //
@@ -60,7 +63,7 @@ export default function ForgetPassword({navigation}) {
                 fontWeight: 'bold',
                 fontFamily: fonts.semiBold,
               }}>
-              Reset your Password
+              {translations.auth.ryp}
             </Text>
           </View>
           <View style={{}}>
@@ -70,13 +73,13 @@ export default function ForgetPassword({navigation}) {
                 fontSize: 16,
                 fontFamily: fonts.regular,
               }}>
-              Enter your email or phone number to get the OTP
+              {translations.auth.rpi}
             </Text>
           </View>
         </View>
         <View style={{flex: 1}}>
           <InputField
-            placeholder={'Type your email or phone number'}
+            placeholder={translations.auth.tyeapn}
             value={username}
             style={styles.inputFieldStyle}
             onChangeText={text => {
@@ -86,7 +89,7 @@ export default function ForgetPassword({navigation}) {
             returnKeyType="next"
           />
           <GradientButton
-            onPress={signInPress}
+            onPress={onSubmit}
             cl1={colors.PRIMARY}
             cl2={colors.SECONDARY}
             style={{
@@ -98,7 +101,7 @@ export default function ForgetPassword({navigation}) {
               fontSize: 20,
               color: colors.WHITE,
             }}
-            text="Reset Password"
+            text={translations.auth.rp}
           />
           <View
             style={{
@@ -113,7 +116,7 @@ export default function ForgetPassword({navigation}) {
                 fontSize: 16,
                 fontFamily: fonts.semiBold,
               }}>
-              Back to?
+              {translations.auth.bt}
             </Text>
             <TouchableOpacity
               onPress={() => {
@@ -126,7 +129,7 @@ export default function ForgetPassword({navigation}) {
                   fontSize: 20,
                   fontFamily: fonts.semiBold,
                 }}>
-                Sign In
+                {translations.auth.signin}
               </Text>
             </TouchableOpacity>
           </View>

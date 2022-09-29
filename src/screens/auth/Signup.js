@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import NavigationService from '../../services/NavigationService';
 import _ from 'lodash';
 import {ShowAlert} from '../../components/ShowAlert';
-
+import {useLocale} from '../../hooks';
 import {
   ActivityIndicator,
   View,
@@ -27,6 +27,8 @@ const passwordRef = React.createRef();
 const cnfPasswordRef = React.createRef();
 
 export default function SignUp({navigation}) {
+  const {translations} = useLocale();
+
   const [pShow, setPshow] = useState(false);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
@@ -115,13 +117,13 @@ export default function SignUp({navigation}) {
                 fontWeight: 'bold',
                 fontFamily: fonts.semiBold,
               }}>
-              Create a Free Account
+              {translations.auth.cfa}
             </Text>
           </View>
         </View>
         <View style={{flex: 1}}>
           <InputField
-            placeholder={'Name'}
+            placeholder={translations.name}
             value={name}
             style={styles.inputFieldStyle}
             onChangeText={text => {
@@ -133,7 +135,7 @@ export default function SignUp({navigation}) {
           />
           <InputField
             ref={usernameRef}
-            placeholder={'Phone/Email'}
+            placeholder={translations.auth.pe}
             value={username}
             style={styles.inputFieldStyle}
             onChangeText={text => {
@@ -146,7 +148,7 @@ export default function SignUp({navigation}) {
           <InputField
             ref={passwordRef}
             value={password}
-            placeholder={'Password'}
+            placeholder={translations.auth.pass}
             errorStyle={{color: 'red'}}
             errorMessage=""
             onChangeText={text => {
@@ -162,7 +164,7 @@ export default function SignUp({navigation}) {
           <InputField
             ref={cnfPasswordRef}
             value={confPassword}
-            placeholder={'Confirm Password'}
+            placeholder={translations.auth.cnfpass}
             errorStyle={{color: 'red'}}
             errorMessage=""
             onChangeText={text => {
@@ -207,7 +209,7 @@ export default function SignUp({navigation}) {
               fontSize: 20,
               color: colors.WHITE,
             }}
-            text="Sign Up"
+            text={translations.auth.signup}
             disabled={!getValidity()}
           />
           <View
@@ -223,7 +225,7 @@ export default function SignUp({navigation}) {
                 fontSize: 16,
                 fontFamily: fonts.semiBold,
               }}>
-              Already have an account?
+              {translations.auth.aha}
             </Text>
             <TouchableOpacity
               onPress={() => {
@@ -236,7 +238,7 @@ export default function SignUp({navigation}) {
                   fontSize: 20,
                   fontFamily: fonts.semiBold,
                 }}>
-                Sign In
+                {translations.auth.signin}
               </Text>
             </TouchableOpacity>
           </View>

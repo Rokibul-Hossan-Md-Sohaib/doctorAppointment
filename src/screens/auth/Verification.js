@@ -28,9 +28,13 @@ import {Button, GradientButton} from '../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
+import {useLocale} from '../../hooks';
 
 export default function Verification({navigation, route}) {
-  // const {userType, OTPType, phoneNumber} = route.params;
+  const {translations} = useLocale();
+
+  const {username} = route.params;
+  console.log('usernameusername', username, route);
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -47,6 +51,11 @@ export default function Verification({navigation, route}) {
   };
   //
   const onSubmit = () => {
+    try {
+    } catch (err) {}
+  };
+  //
+  const resendOtp = () => {
     try {
     } catch (err) {}
   };
@@ -73,7 +82,7 @@ export default function Verification({navigation, route}) {
                 fontWeight: 'bold',
                 fontFamily: fonts.semiBold,
               }}>
-              Enter your OTP
+              {translations.auth.eyp}
             </Text>
           </View>
           <View style={{marginTop: 80}}>
@@ -83,7 +92,8 @@ export default function Verification({navigation, route}) {
                 fontSize: 16,
                 fontFamily: fonts.regular,
               }}>
-              We have sent you an OTP
+              {translations.auth.whso}
+              {username}
             </Text>
           </View>
         </View>
@@ -102,9 +112,10 @@ export default function Verification({navigation, route}) {
               textContentType="oneTimeCode"
               renderCell={({index, symbol, isFocused}) => (
                 <View
+                  key={index}
                   style={{
-                    width: 55,
-                    height: 55,
+                    width: 48,
+                    height: 48,
                     backgroundColor: colors.WHITE,
                     margin: 4,
                     borderWidth: 2,
@@ -112,7 +123,6 @@ export default function Verification({navigation, route}) {
                     borderRadius: 10,
                   }}>
                   <Text
-                    key={index}
                     style={[styles.cell, isFocused && styles.focusCell]}
                     onLayout={getCellOnLayoutHandler(index)}>
                     {symbol || (isFocused ? <Cursor /> : null)}
@@ -134,7 +144,7 @@ export default function Verification({navigation, route}) {
               fontSize: 20,
               color: colors.WHITE,
             }}
-            text="Submit"
+            text={translations.submit}
           />
           <View
             style={{
@@ -149,12 +159,9 @@ export default function Verification({navigation, route}) {
                 fontSize: 16,
                 fontFamily: fonts.semiBold,
               }}>
-              Didn't get it?
+              {translations.auth.dgt}
             </Text>
-            <TouchableOpacity
-              onPress={() => {
-                navigation?.navigate(routes.LOGIN);
-              }}>
+            <TouchableOpacity onPress={resendOtp}>
               <Text
                 style={{
                   color: colors.SECONDARY,
@@ -162,7 +169,7 @@ export default function Verification({navigation, route}) {
                   fontSize: 20,
                   fontFamily: fonts.semiBold,
                 }}>
-                Resend
+                {translations.auth.resend}
               </Text>
             </TouchableOpacity>
           </View>
@@ -181,8 +188,8 @@ const styles = StyleSheet.create({
   },
   cell: {
     textAlign: 'center',
-    lineHeight: 53,
-    fontSize: 30,
+    lineHeight: 46,
+    fontSize: 25,
 
     color: colors.GRAY,
   },
