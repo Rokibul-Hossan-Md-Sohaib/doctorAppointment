@@ -129,6 +129,12 @@ export default function Home({navigation}) {
               marginVertical: 16,
             }}></View>
           <PopularDoctorsList />
+          <View
+            style={{
+              height: 4,
+              backgroundColor: '#D9E7F0',
+              marginVertical: 16,
+            }}></View>
         </KeyboardAwareScrollView>
       </PatientWrapper>
     );
