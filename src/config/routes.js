@@ -16,6 +16,7 @@ const Routes = {
   PATIENT_HOME: 'Patient Home',
   DOCTOR_DASHBOARD: 'Doctor Dashboard',
   BACK: 'Back',
+  HOME:'Home',
   PATIENT_APPOINTMENT: 'Patient Appointment',
   PATIENT_APPOINTMENT_CREATE: 'Create Appointment',
   JOURNAL: 'Journal',

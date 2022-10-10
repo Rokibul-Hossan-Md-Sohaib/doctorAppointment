@@ -11,6 +11,7 @@ const colors = {
   PRIMARY: '#0095D9',
   SECONDARY: '#00B3E9',
   INFO: '#FAAC58',
+  ICON_COLOR: '#595F65',
   getRandomColor: () => {
     var letters = '012345'.split('');
     var color = '#';

@@ -29,4 +29,5 @@ export default EN = {
   email: 'Email',
   age: 'Age',
   submit: 'Submit',
+  search_doctor: 'Search doctors for appointment',
 };

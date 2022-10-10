@@ -8,27 +8,20 @@ import {navigationRef} from '../services/NavigationService';
 import {routes, colors} from '../config';
 // import Loader from '../screens/Loader';
 import PatientInfo from '../screens/patient/FirstInfo';
-import Signup from '../screens/auth/Signup';
-import ForgetPassword from '../screens/auth/ForgetPassword';
-import Verification from '../screens/auth/Verification';
-
+import Home from '../screens/patient/Home';
+import PatientBottomNavigator from '../navigation/PatientBottomNavigator';
 const Stack = createStackNavigator();
 
 export default function PatientStack() {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        initialRouteName={routes.FIRSTPAGE}
+        initialRouteName={routes.HOME}
         screenOptions={{
           headerShown: false,
         }}>
+        <Stack.Screen name={routes.HOME} component={PatientBottomNavigator} />
         <Stack.Screen name={routes.FIRSTPAGE} component={PatientInfo} />
-        <Stack.Screen name={routes.SIGNUP} component={Signup} />
-        <Stack.Screen name={routes.VERIFICATION} component={Verification} />
-        <Stack.Screen
-          name={routes.FORGET_PASSWORD}
-          component={ForgetPassword}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );

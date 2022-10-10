@@ -22,7 +22,6 @@ import {Button, GradientButton} from '../../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {genderList} from '../../../utils';
-import {isLogBoxErrorMessage} from 'react-native/Libraries/LogBox/Data/LogBoxData';
 const win = Dimensions.get('window');
 const passwordRef = React.createRef();
 const goToPassword = event => {
@@ -119,6 +118,7 @@ export default function PatientInfo({navigation}) {
                   onPress={() => {
                     setGender(item.val);
                   }}
+                  key={item.id}
                   style={{
                     flex: 1,
                     marginTop: 16,
@@ -164,26 +164,23 @@ export default function PatientInfo({navigation}) {
               }}
               text="Update now"
             />
-            <TouchableOpacity
-              onPress={() => {
-                navigation?.navigate(routes.FORGOT_PASSWORD);
-              }}
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 80,
-              }}>
-              <Text
-                style={{
-                  color: colors.PRIMARY,
-                  fontSize: 16,
-                  fontFamily: fonts.regular,
-                }}>
-                Skip
-              </Text>
-            </TouchableOpacity>
           </View>
         </KeyboardAwareScrollView>
+        <View style={styles.skipBtn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation?.navigate(routes.FORGOT_PASSWORD);
+            }}>
+            <Text
+              style={{
+                color: colors.PRIMARY,
+                fontSize: 16,
+                fontFamily: fonts.regular,
+              }}>
+              Skip
+            </Text>
+          </TouchableOpacity>
+        </View>
       </PatientWrapper>
     );
   }
@@ -200,5 +197,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.LIGHT_GRAY,
     borderRadius: 8,
+  },
+  skipBtn: {
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 40,
   },
 });
