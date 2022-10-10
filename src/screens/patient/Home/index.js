@@ -23,7 +23,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
-
+import PopularDoctorsList from './PopularDoctorsList';
 export default function Home({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
@@ -121,54 +121,14 @@ export default function Home({navigation}) {
               />
             </View>
           </View>
+          {/*Popular Doctors List*/}
           <View
             style={{
               height: 4,
               backgroundColor: '#D9E7F0',
               marginVertical: 16,
             }}></View>
-          <View>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                marginHorizontal: 16,
-              }}>
-              <View>
-                <Text
-                  style={{
-                    fontFamily: fonts.semiBold,
-                    fontSize: 16,
-                    color: '#474747',
-                  }}>
-                  Popular Doctors
-                </Text>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: 'flex-end',
-                }}>
-                <Image
-                  style={{width: 20, height: 20}}
-                  resizeMode="contain"
-                  source={images.filter1}
-                />
-              </View>
-              <View
-                style={{
-                  alignItems: 'flex-start',
-                  marginRight: 10,
-                  marginHorizontal: 10,
-                }}>
-                <Image
-                  style={{width: 20, height: 20}}
-                  resizeMode="contain"
-                  source={images.filter2}
-                />
-              </View>
-            </View>
-          </View>
+          <PopularDoctorsList />
         </KeyboardAwareScrollView>
       </PatientWrapper>
     );
