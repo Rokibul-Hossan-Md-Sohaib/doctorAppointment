@@ -24,10 +24,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
+import StarRating from 'react-native-star-rating';
 
 export default function PopularDoctorsList({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
+  const [starCount, setStarCount] = useState(4);
   const popularDoctors = ['a', 'b'];
   //
   useEffect(() => {
@@ -136,7 +138,18 @@ export default function PopularDoctorsList({navigation}) {
                         marginLeft: 20,
                       }}></View>
                     <View style={{flex: 1, marginHorizontal: 10}}>
-                      <Text style={styles.textStyle}>MBBS,BCS</Text>
+                      <StarRating
+                        disabled={true}
+                        fullStarColor={'#5B5B5B'}
+                        containerStyle={{
+                          justifyContent: 'flex-start',
+                          alignItems: 'center',
+                        }}
+                        starSize={15}
+                        buttonStyle={{paddingRight: 2}}
+                        maxStars={5}
+                        rating={starCount}
+                      />
                       <Text style={[styles.labelStyle]}>Rating</Text>
                     </View>
                   </View>
@@ -176,7 +189,7 @@ export default function PopularDoctorsList({navigation}) {
 
       <TouchableOpacity style={{marginHorizontal: 16}} onPress={() => {}}>
         <Text style={[styles.textStyle, {color: '#484848', fontSize: 16}]}>
-          See all doctore
+          See all doctors
         </Text>
       </TouchableOpacity>
     </View>

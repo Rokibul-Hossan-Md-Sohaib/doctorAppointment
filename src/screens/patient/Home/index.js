@@ -122,19 +122,9 @@ export default function Home({navigation}) {
             </View>
           </View>
           {/*Popular Doctors List*/}
-          <View
-            style={{
-              height: 4,
-              backgroundColor: '#D9E7F0',
-              marginVertical: 16,
-            }}></View>
+          <View style={styles.gap}></View>
           <PopularDoctorsList />
-          <View
-            style={{
-              height: 4,
-              backgroundColor: '#D9E7F0',
-              marginVertical: 16,
-            }}></View>
+          <View style={styles.gap}></View>
         </KeyboardAwareScrollView>
       </PatientWrapper>
     );
@@ -163,5 +153,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'absolute',
     bottom: 40,
+  },
+  gap: {
+    height: 4,
+    backgroundColor: '#D9E7F0',
+    marginVertical: 16,
   },
 });
