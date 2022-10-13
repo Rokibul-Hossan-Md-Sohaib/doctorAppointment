@@ -49,133 +49,24 @@ export default function PatientSettings({navigation}) {
         </View>
         {/**/}
         <Items title={translations.edit_profile} img={images.user} />
-        {/**/}
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.edit_profile}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.user)}
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.change_pass}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.settings)}
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.manage_patient}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.users)}
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.fav_doc}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.love)}
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
+        <Items title={translations.change_pass} img={images.settings} />
+        <Items title={translations.manage_patient} img={images.users} />
+        <Items title={translations.fav_doc} img={images.love} />
         {/* Payment */}
         <View style={{marginVertical: 8}}>
           <Text style={styles.hdrText}>{translations.payments}</Text>
         </View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.pay_his}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.history1)}
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.pay_policy}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.dollar)}
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-
+        <Items title={translations.pay_his} img={images.history1} />
+        <Items title={translations.pay_policy} img={images.dollar} />
         {/* Legal */}
         <View style={{marginVertical: 8}}>
           <Text style={styles.hdrText}>{translations.legal}</Text>
         </View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.t_c}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.terms)}
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.pp}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            {Icon(images.terms)}
-
-            <Image
-              style={{width: 16, height: 16}}
-              resizeMode="contain"
-              source={images.policy}
-            />
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.faq}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            <Image
-              style={{width: 16, height: 16}}
-              resizeMode="contain"
-              source={images.faq}
-            />
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.aboutus}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            <Image
-              style={{width: 16, height: 16}}
-              resizeMode="contain"
-              source={images.info}
-            />
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
-        <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
-          <View style={{flex: 1}}>
-            <Text style={styles.subHdrText}>{translations.logout}</Text>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end'}}>
-            <Image
-              style={{width: 16, height: 16}}
-              resizeMode="contain"
-              source={images.logout}
-            />
-          </View>
-        </TouchableOpacity>
-        <View style={styles.gap}></View>
+        <Items title={translations.t_c} img={images.terms} />
+        <Items title={translations.pp} img={images.policy} />
+        <Items title={translations.faq} img={images.faq} />
+        <Items title={translations.aboutus} img={images.info} />
+        <Items title={translations.logout} img={images.logout} />
       </KeyboardAwareScrollView>
     </PatientWrapper>
   );
