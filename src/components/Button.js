@@ -76,7 +76,30 @@ const GradientButton = props => {
         }}
         start={{x: 0, y: 1}}
         end={{x: 1, y: 1}}>
-        <Text style={props?.titleStyle}>{props.text}</Text>
+        {props.rightIcon ? (
+          <View
+            style={{
+              flexDirection: 'row',
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 2,
+            }}>
+            <View
+              style={{
+                flex: 2,
+                alignItems: 'flex-end',
+                justifyContent: 'center',
+              }}>
+              <Text style={props?.titleStyle}>{props.text}</Text>
+            </View>
+            <View style={props.rightIconStyle}>
+              {props.rightIcon && props.rightIcon}
+            </View>
+          </View>
+        ) : (
+          <Text style={props?.titleStyle}>{props.text}</Text>
+        )}
       </LinearGradient>
     </TouchableOpacity>
   );

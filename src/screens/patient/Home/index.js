@@ -24,6 +24,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
 import PopularDoctorsList from './PopularDoctorsList';
+import PatientPackage from './PatientPackage';
 export default function Home({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
@@ -124,6 +125,9 @@ export default function Home({navigation}) {
           {/*Popular Doctors List*/}
           <View style={styles.gap}></View>
           <PopularDoctorsList />
+          <View style={styles.gap}></View>
+          {/* Package */}
+          <PatientPackage />
           <View style={styles.gap}></View>
         </KeyboardAwareScrollView>
       </PatientWrapper>

@@ -14,10 +14,7 @@ import {images, colors, routes, fonts} from '../config';
 import Home from '../screens/patient/Home';
 import DoctorCategory from '../screens/patient/DoctorCategory';
 import PatientSettings from '../screens/patient/Settings';
-// import History from '../screens/patient/Home';
-// import NewAppointment from '../screens/patient/Home';
-// import DoctorCategory from '../screens/patient/Home';
-// import More from '../screens/course/More';
+import PatientHistory from '../screens/patient/History';
 
 const Tab = createBottomTabNavigator();
 
@@ -55,6 +52,31 @@ function PatientBottomNavigator(props) {
         }}
       />
       <Tab.Screen
+        name="PatientHistory"
+        component={PatientHistory}
+        options={{
+          tabBarLabel: 'History',
+          tabBarIcon: ({focused}) => Icon(images.history, focused),
+          tabBarOptions: {activeTintColor: colors.PRIMARY},
+        }}
+      />
+      <Tab.Screen
+        name="Appointment"
+        component={DoctorCategory}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              style={{
+                width: 80,
+                height: 80,
+              }}
+              resizeMode="contain"
+              source={images.plus}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Category"
         component={DoctorCategory}
         options={{
@@ -62,6 +84,7 @@ function PatientBottomNavigator(props) {
           tabBarIcon: ({focused}) => Icon(images.doc_specialist, focused),
         }}
       />
+
       <Tab.Screen
         name="PatientSettings"
         component={PatientSettings}
