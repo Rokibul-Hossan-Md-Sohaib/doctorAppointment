@@ -20,16 +20,15 @@ import AuthWrapper from './AuthWrapper';
 import {images, colors, routes, fonts} from '../../config';
 import InputField from '../../components/InputField';
 import {Button, GradientButton} from '../../components/Button';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import Password from '../../components/Password';
+
 const usernameRef = React.createRef();
 const passwordRef = React.createRef();
 const cnfPasswordRef = React.createRef();
 
 export default function SignUp({navigation}) {
   const {translations} = useLocale();
-
-  const [pShow, setPshow] = useState(false);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -38,47 +37,6 @@ export default function SignUp({navigation}) {
   useEffect(() => {
     return () => {};
   }, []);
-  //
-  const rightIcon = () => {
-    return (
-      <TouchableOpacity
-        style={{position: 'absolute', right: 15, marginTop: 14}}
-        onPress={() => setPshow(!pShow)}>
-        <Icon
-          name={pShow ? 'eye' : 'eye-slash'}
-          size={22}
-          color={colors.GRAY}
-        />
-      </TouchableOpacity>
-    );
-  };
-  //
-  //
-  const rightIconCnfPass = () => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          ShowAlert({
-            title: 'info!',
-            msg: 'Passwords do NOT match',
-            OnOK: () => {},
-          });
-        }}
-        style={{position: 'absolute', right: 15, marginTop: 14}}>
-        <Icon
-          name={
-            password.length && password === confPassword
-              ? 'check-circle'
-              : confPassword.length && confPassword.length
-              ? 'info-circle'
-              : null
-          }
-          size={22}
-          color={password === confPassword ? colors.SUCCESS : colors.INFO}
-        />
-      </TouchableOpacity>
-    );
-  };
   //
   const getValidity = () => {
     return (
@@ -145,36 +103,17 @@ export default function SignUp({navigation}) {
             containerStyle={[styles.inputContainerStyle]}
             returnKeyType="next"
           />
-          <InputField
-            ref={passwordRef}
-            value={password}
-            placeholder={translations.auth.pass}
-            errorStyle={{color: 'red'}}
-            errorMessage=""
-            onChangeText={text => {
+          <Password
+            passwordRef={passwordRef}
+            cnfPasswordRef={cnfPasswordRef}
+            password={password}
+            confPassword={confPassword}
+            setPassword={text => {
               setPassword(text);
             }}
-            onSubmitEditing={() => cnfPasswordRef.current.focus()}
-            style={styles.inputFieldStyle}
-            secureTextEntry={pShow ? false : true}
-            containerStyle={[styles.inputContainerStyle]}
-            returnKeyType="done"
-            rightIcon={rightIcon}
-          />
-          <InputField
-            ref={cnfPasswordRef}
-            value={confPassword}
-            placeholder={translations.auth.cnfpass}
-            errorStyle={{color: 'red'}}
-            errorMessage=""
-            onChangeText={text => {
+            setConfPassword={text => {
               setConfPassword(text);
             }}
-            style={styles.inputFieldStyle}
-            secureTextEntry={pShow ? false : true}
-            containerStyle={[styles.inputContainerStyle]}
-            returnKeyType="done"
-            rightIcon={rightIconCnfPass}
           />
           {/* <Button
           disabled={!getValidity()}

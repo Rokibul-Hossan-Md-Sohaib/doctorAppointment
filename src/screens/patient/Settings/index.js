@@ -48,30 +48,77 @@ export default function PatientSettings({navigation}) {
           <Text style={styles.hdrText}>{translations.profile}</Text>
         </View>
         {/**/}
-        <Items title={translations.edit_profile} img={images.user} />
-        <Items title={translations.change_pass} img={images.settings} />
-        <Items title={translations.manage_patient} img={images.users} />
-        <Items title={translations.fav_doc} img={images.love} />
+        <Items
+          title={translations.edit_profile}
+          img={images.user}
+          navigation={navigation}
+          routepath={routes.PATIENT_PROFILE}
+        />
+        <Items
+          title={translations.change_pass}
+          img={images.settings}
+          navigation={navigation}
+          routepath={routes.RESET_PASSWORD}
+        />
+        <Items
+          title={translations.manage_patient}
+          img={images.users}
+          navigation={navigation}
+          routepath={routes.MANAGE_PATIENT}
+        />
+        <Items
+          title={translations.fav_doc}
+          img={images.love}
+          navigation={navigation}
+        />
         {/* Payment */}
         <View style={{marginVertical: 8}}>
           <Text style={styles.hdrText}>{translations.payments}</Text>
         </View>
-        <Items title={translations.pay_his} img={images.history1} />
-        <Items title={translations.pay_policy} img={images.dollar} />
+        <Items
+          title={translations.pay_his}
+          img={images.history1}
+          navigation={navigation}
+        />
+        <Items
+          title={translations.pay_policy}
+          img={images.dollar}
+          navigation={navigation}
+        />
         {/* Legal */}
         <View style={{marginVertical: 8}}>
           <Text style={styles.hdrText}>{translations.legal}</Text>
         </View>
-        <Items title={translations.t_c} img={images.terms} />
-        <Items title={translations.pp} img={images.policy} />
-        <Items title={translations.faq} img={images.faq} />
-        <Items title={translations.aboutus} img={images.info} />
-        <Items title={translations.logout} img={images.logout} />
+        <Items
+          title={translations.t_c}
+          img={images.terms}
+          navigation={navigation}
+        />
+        <Items
+          title={translations.pp}
+          img={images.policy}
+          navigation={navigation}
+        />
+        <Items
+          title={translations.faq}
+          img={images.faq}
+          navigation={navigation}
+        />
+        <Items
+          title={translations.aboutus}
+          img={images.info}
+          navigation={navigation}
+        />
+        <Items
+          title={translations.logout}
+          img={images.logout}
+          navigation={navigation}
+        />
       </KeyboardAwareScrollView>
     </PatientWrapper>
   );
 }
-function Items({title, img}) {
+function Items({title, img, navigation, routepath}) {
   //
   const Icon = src => {
     return (
@@ -83,9 +130,15 @@ function Items({title, img}) {
     );
   };
   //
+  const navigateToPage = path => {
+    navigation?.navigate(path);
+  };
+  //
   return (
     <View>
-      <TouchableOpacity style={styles.subHdr} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.subHdr}
+        onPress={() => navigateToPage(routepath)}>
         <View style={{flex: 1}}>
           <Text style={styles.subHdrText}>{title}</Text>
         </View>
