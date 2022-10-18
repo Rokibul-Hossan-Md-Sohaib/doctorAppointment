@@ -13,6 +13,7 @@ const Routes = {
   FORGOT_PASSWORD: 'Forgot Password',
   RESET_PASSWORD: 'Reset Password',
   MANAGE_PATIENT: 'Manage Patient',
+  FAV_DOCTOR: 'Favourite Doctor',
   PATIENT_DASHBOARD: 'Patient Dashboard',
   PATIENT_HOME: 'Patient Home',
   DOCTOR_DASHBOARD: 'Doctor Dashboard',

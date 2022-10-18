@@ -64,11 +64,14 @@ function PatientBottomNavigator(props) {
         name="Appointment"
         component={DoctorCategory}
         options={{
+          tabBarLabel: () => {
+            return null;
+          },
           tabBarIcon: ({focused}) => (
             <Image
               style={{
-                width: 80,
-                height: 80,
+                width: 100,
+                height: 100,
               }}
               resizeMode="contain"
               source={images.plus}

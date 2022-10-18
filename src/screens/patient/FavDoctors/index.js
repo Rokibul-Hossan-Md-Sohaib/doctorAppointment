@@ -20,11 +20,10 @@ import {RegularText, SemiboldText, BoldText} from '../../../components/Text';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {GradientButton} from '../../../components/Button';
-import UpdatePatient from './UpdatePatient';
 
 import {useLocale} from '../../../hooks';
 //
-export default function PatientManage({navigation}) {
+export default function FavDoctors({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
   //
@@ -53,11 +52,11 @@ export default function PatientManage({navigation}) {
     return (
       <PatientWrapper
         hdr={true}
-        hdrText={'Manage Patients'}
+        hdrText={'Favourite Doctors'}
         back={true}
         navigation={navigation}>
         <KeyboardAwareScrollView style={{flex: 1}}>
-          <PatientCard navigation={navigation} />
+            
         </KeyboardAwareScrollView>
         <GradientButton
           onPress={onSubmit}
@@ -72,7 +71,7 @@ export default function PatientManage({navigation}) {
             fontSize: 20,
             color: colors.WHITE,
           }}
-          text="Add a patient"
+          text="Add a doctor"
         />
       </PatientWrapper>
     );
@@ -136,13 +135,6 @@ function PatientCard({navigation}) {
           </View>
         </View>
       </TouchableOpacity>
-      {modalShow && (
-        <UpdatePatient
-          modalShow={modalShow}
-          setModalShow={setModalShow}
-          item={{name: 'Asd', age: '30', gender: 'male'}}
-        />
-      )}
     </View>
   );
 }

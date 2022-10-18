@@ -11,6 +11,7 @@ import PatientInfo from '../screens/patient/FirstInfo';
 import PatientProfile from '../screens/patient/Profile';
 import PasswordChange from '../screens/patient/PasswordChange';
 import PatientManage from '../screens/patient/ManagePatients';
+import FavDoctors from '../screens/patient/FavDoctors';
 import PatientBottomNavigator from '../navigation/PatientBottomNavigator';
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function PatientStack() {
         />
         <Stack.Screen name={routes.RESET_PASSWORD} component={PasswordChange} />
         <Stack.Screen name={routes.MANAGE_PATIENT} component={PatientManage} />
+        <Stack.Screen name={routes.FAV_DOCTOR} component={FavDoctors} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -70,6 +70,7 @@ export default function PatientSettings({navigation}) {
           title={translations.fav_doc}
           img={images.love}
           navigation={navigation}
+          routepath={routes.FAV_DOCTOR}
         />
         {/* Payment */}
         <View style={{marginVertical: 8}}>
