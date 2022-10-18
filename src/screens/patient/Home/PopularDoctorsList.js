@@ -25,6 +25,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
 import StarRating from 'react-native-star-rating';
+import DoctorCard from './DoctorCard';
 
 export default function PopularDoctorsList({navigation}) {
   const {translations} = useLocale();
@@ -91,98 +92,7 @@ export default function PopularDoctorsList({navigation}) {
           extraData={popularDoctors}
           data={popularDoctors}
           renderItem={({item}) => {
-            return (
-              <View style={styles.card}>
-                <View style={{alignItems: 'center', marginRight: 16}}>
-                  <Image
-                    style={{
-                      width: 44,
-                      height: 44,
-                      justifyContent: 'flex-start',
-                      marginHorizontal: 5,
-                    }}
-                    resizeMode="contain"
-                    source={images.profile_demo}
-                  />
-                  <Text style={{fontSize: 11, fontFamily: fonts.regular}}>
-                    General
-                  </Text>
-                  <Text style={{fontSize: 11, fontFamily: fonts.regular}}>
-                    Physician
-                  </Text>
-                </View>
-                <View style={{marginLeft: 5}}>
-                  <Text style={{fontSize: 14, fontFamily: fonts.bold}}>
-                    Dr. Aticul Islam
-                  </Text>
-                  <Text style={styles.textStyle}>MBBS,BCS</Text>
-                  <Text style={{fontSize: 12, fontFamily: fonts.regular}}>
-                    Training/Courses: PGT(internal medicine)
-                  </Text>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      marginVertical: 5,
-                      alignItems: 'center',
-                      flex: 1,
-                    }}>
-                    <View style={{flex: 1}}>
-                      <Text style={styles.textStyle}>8 Years</Text>
-                      <Text style={[styles.labelStyle]}>Expericence</Text>
-                    </View>
-                    <View
-                      style={{
-                        backgroundColor: '#C2C2C2',
-                        width: 1,
-                        height: 30,
-                        marginLeft: 20,
-                      }}></View>
-                    <View style={{flex: 1, marginHorizontal: 10}}>
-                      <StarRating
-                        disabled={true}
-                        fullStarColor={'#5B5B5B'}
-                        containerStyle={{
-                          justifyContent: 'flex-start',
-                          alignItems: 'center',
-                        }}
-                        starSize={15}
-                        buttonStyle={{paddingRight: 2}}
-                        maxStars={5}
-                        rating={starCount}
-                      />
-                      <Text style={[styles.labelStyle]}>Rating</Text>
-                    </View>
-                  </View>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      marginVertical: 5,
-                      alignItems: 'center',
-                      flex: 1,
-                    }}>
-                    <View style={{flex: 1}}>
-                      <Text
-                        numberOfLines={1}
-                        style={{fontSize: 12, fontFamily: fonts.regular}}>
-                        My health app
-                      </Text>
-                      <Text style={[styles.labelStyle]}>Working</Text>
-                    </View>
-                    <View
-                      style={{
-                        backgroundColor: '#C2C2C2',
-                        width: 1,
-                        height: 30,
-                        marginLeft: 20,
-                      }}></View>
-                    <View style={{flex: 1, marginHorizontal: 10}}>
-                      <Text style={styles.textStyle}>BDT 500.00</Text>
-                      <Text style={[styles.labelStyle]}>Online Fees</Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            );
+            return <DoctorCard />;
           }}
         />
       </View>
