@@ -19,9 +19,10 @@ import {images, colors, routes, fonts} from '../../../config';
 import InputField from '../../../components/InputField';
 import {Button} from '../../../components/Button';
 import {genderList} from '../../../utils';
-
+import CustomImagePicker from '../../../components/ImagePicker';
 export default function ProfileView({navigation, item}) {
   const [bInit, setBInit] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const [age, setAge] = useState(item?.age || '');
   const [name, setName] = useState(item?.name || '');
   const [gender, setGender] = useState(item?.gender || 'male');
@@ -38,13 +39,15 @@ export default function ProfileView({navigation, item}) {
 
   return (
     <View>
-      <View style={{flex: 1, alignItems: 'center', marginTop: 60}}>
+      <TouchableOpacity
+        onPress={() => setModalVisible(true)}
+        style={{flex: 1, alignItems: 'center', marginTop: 60}}>
         <Image
           style={styles.imgStyle}
           resizeMode="contain"
           source={images.profile_demo}
         />
-      </View>
+      </TouchableOpacity>
       <View style={{flex: 1, marginTop: 16}}>
         <InputField
           placeholder={'Name'}
@@ -103,6 +106,11 @@ export default function ProfileView({navigation, item}) {
             />
           ))}
         </View>
+        <CustomImagePicker
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          img={images.profile_demo}
+        />
       </View>
     </View>
   );
