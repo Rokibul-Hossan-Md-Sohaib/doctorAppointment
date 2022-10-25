@@ -15,10 +15,11 @@ import Home from '../screens/patient/Home';
 import DoctorCategory from '../screens/patient/DoctorCategory';
 import PatientSettings from '../screens/patient/Settings';
 import PatientHistory from '../screens/patient/History';
+import Appointment from '../screens/patient/appointment';
 
 const Tab = createBottomTabNavigator();
 
-function PatientBottomNavigator(props) {
+function PatientBottomNavigator({navigation}) {
   //
   const Icon = (src, focused) => {
     return (
@@ -62,7 +63,7 @@ function PatientBottomNavigator(props) {
       />
       <Tab.Screen
         name="Appointment"
-        component={DoctorCategory}
+        component={Appointment}
         options={{
           tabBarLabel: () => {
             return null;
@@ -75,6 +76,14 @@ function PatientBottomNavigator(props) {
               }}
               resizeMode="contain"
               source={images.plus}
+            />
+          ),
+          tabBarButton: props => (
+            <TouchableOpacity
+              {...props}
+              onPress={() => {
+                navigation.navigate(routes.PATIENT_APPOINTMENT_CREATE);
+              }}
             />
           ),
         }}
