@@ -16,7 +16,12 @@ import {
 } from 'react-native';
 import PatientWrapper from '../wrapper';
 import {images, colors, routes, fonts} from '../../../config';
-import {RegularText, SemiboldText, BoldText} from '../../../components/Text';
+import {
+  RegularText,
+  SemiboldText,
+  BoldText,
+  GradientText,
+} from '../../../components/Text';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {GradientButton} from '../../../components/Button';
@@ -55,7 +60,58 @@ export default function Appointment({navigation}) {
         hdrText={'Appointment'}
         back={true}
         navigation={navigation}>
-        <KeyboardAwareScrollView style={{flex: 1}}></KeyboardAwareScrollView>
+        <KeyboardAwareScrollView
+          style={{flex: 1, marginHorizontal: 16, marginVertical: 16}}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 1, alignItems: 'flex-start'}}>
+              <BoldText
+                style={{fontSize: 16, color: '#282828'}}
+                title={'Patient'}
+              />
+            </View>
+            <View style={{flex: 1, alignItems: 'flex-end'}}>
+              <TouchableOpacity style={{}} onPress={() => {}}>
+                <GradientText
+                  onPress={() => {}}
+                  cl1={colors.PRIMARY}
+                  cl2={colors.SECONDARY}
+                  style={{fontSize: 14}}>
+                  Change Patient
+                </GradientText>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{flex: 1, marginTop: 8, marginHorizontal: 8}}>
+            <BoldText
+              style={{fontSize: 16, color: '#282828'}}
+              title={'Nasir Uddin'}
+            />
+            <SemiboldText
+              style={{fontSize: 12, color: '#282828'}}
+              title={'Age: 26 Years Gender: Male'}
+            />
+          </View>
+
+          <View style={{flexDirection: 'row', marginVertical: 8}}>
+            <View style={{flex: 1, alignItems: 'flex-start'}}>
+              <BoldText
+                style={{fontSize: 16, color: '#282828'}}
+                title={'Selected Doctor'}
+              />
+            </View>
+            <View style={{flex: 1, alignItems: 'flex-end'}}>
+              <TouchableOpacity style={{}} onPress={() => {}}>
+                <GradientText
+                  onPress={() => {}}
+                  cl1={colors.PRIMARY}
+                  cl2={colors.SECONDARY}
+                  style={{fontSize: 14}}>
+                  Change Doctor
+                </GradientText>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </KeyboardAwareScrollView>
         <GradientButton
           onPress={onSubmit}
           cl1={colors.PRIMARY}
@@ -69,7 +125,7 @@ export default function Appointment({navigation}) {
             fontSize: 20,
             color: colors.WHITE,
           }}
-          text="Add a patient"
+          text="Make Payment & Confirm"
         />
       </PatientWrapper>
     );

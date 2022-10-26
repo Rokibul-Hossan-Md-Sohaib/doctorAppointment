@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {colors, fonts} from '../config';
 import LinearGradient from 'react-native-linear-gradient';
-
 //normal TouchableOpacity
 const Button = ({
   title,
@@ -104,6 +103,7 @@ const GradientButton = props => {
     </TouchableOpacity>
   );
 };
+//
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',

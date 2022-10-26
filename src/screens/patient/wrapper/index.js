@@ -26,9 +26,9 @@ export default function PatientWrapper({
         <View style={styles.header}>
           {back && (
             <TouchableOpacity
-              style={{position: 'absolute', left: 10}}
+              style={{position: 'absolute', left: 0}}
               onPress={() => navigation?.goBack()}>
-              <Icon name={'chevron-left'} size={22} color={'#404446'} />
+              <Icon name={'chevron-left'} size={24} color={'#404446'} />
             </TouchableOpacity>
           )}
           <Text style={styles.hdrText}>{hdrText}</Text>
