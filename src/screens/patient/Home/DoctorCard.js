@@ -115,7 +115,6 @@ export default function DoctorCard({navigation, cardStyle, fav}) {
               backgroundColor: '#C2C2C2',
               width: 1,
               height: 30,
-              marginLeft: 20,
             }}></View>
           <View style={{flex: 1, marginHorizontal: 10}}>
             <Text style={styles.textStyle}>BDT 500.00</Text>

@@ -25,12 +25,14 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {GradientButton} from '../../../components/Button';
-
+import {Calendar} from '../../../modules';
 import {useLocale} from '../../../hooks';
 //
 export default function Appointment({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   //
   useEffect(() => {
     return () => {};
@@ -61,7 +63,7 @@ export default function Appointment({navigation}) {
         back={true}
         navigation={navigation}>
         <KeyboardAwareScrollView
-          style={{flex: 1, marginHorizontal: 16, marginVertical: 16}}>
+          style={{flex: 1, marginHorizontal: 16, marginVertical: 8}}>
           <View style={{flexDirection: 'row'}}>
             <View style={{flex: 1, alignItems: 'flex-start'}}>
               <BoldText
@@ -110,6 +112,98 @@ export default function Appointment({navigation}) {
                 </GradientText>
               </TouchableOpacity>
             </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View>
+              <Image
+                style={{
+                  width: 44,
+                  height: 44,
+                  justifyContent: 'flex-start',
+                  marginHorizontal: 5,
+                }}
+                resizeMode="contain"
+                source={images.profile_demo}
+              />
+            </View>
+            <View style={{flex: 1, marginHorizontal: 5}}>
+              <BoldText
+                style={{fontSize: 12, color: '#282828'}}
+                title={'Dr. Sadia Jahan'}
+              />
+              <RegularText
+                style={{fontSize: 12, color: '#282828'}}
+                title={'General Physician'}
+              />
+              <RegularText
+                style={{fontSize: 12, color: '#282828'}}
+                title={'Fees: 200'}
+              />
+            </View>
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'flex-end',
+              }}>
+              <BoldText
+                style={{
+                  textAlign: 'left',
+                  fontSize: 12,
+                  color: '#282828',
+                }}
+                title={'Type'}
+              />
+              <RegularText
+                style={{
+                  fontSize: 12,
+                  color: '#282828',
+                }}
+                title={'Chamber'}
+              />
+            </View>
+          </View>
+          <View style={{flex: 1, marginVertical: 8}}>
+            <BoldText
+              style={{fontSize: 16, color: '#282828'}}
+              title={'Select Appointment Date'}
+            />
+          </View>
+          <View>
+            <TouchableOpacity
+              style={{marginVertical: 10}}
+              onPress={() => setIsCalendarVisible(!isCalendarVisible)}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  borderRadius: 8,
+                  borderStyle: 'solid',
+                  borderWidth: 0.6,
+                  borderColor: '#e0e0e0',
+                  backgroundColor: '#fff',
+                  height: 48,
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  paddingRight: 15,
+                  paddingLeft: 15,
+                }}>
+                <View
+                  style={{
+                    fontFamily: fonts.regular,
+                    fontSize: 16,
+                  }}>
+                  <Text>Date</Text>
+                </View>
+                <View>
+                  <Icon name={'calendar-alt'} size={22} color={colors.GRAY} />
+                </View>
+              </View>
+            </TouchableOpacity>
+            {isCalendarVisible && (
+              <Calendar
+                selectedDate={selectedDate}
+                setSelectedDate={val => setSelectedDate(val)}
+              />
+            )}
           </View>
         </KeyboardAwareScrollView>
         <GradientButton
