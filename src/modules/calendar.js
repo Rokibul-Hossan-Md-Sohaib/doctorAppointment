@@ -28,6 +28,7 @@ export default ({selectedDate, setSelectedDate, minDate}) => {
         dotColor: '#00adf5',
         // selectedDotColor: 'red',
         arrowColor: colors.WHITE,
+
         disabledArrowColor: colors.CHARCOAL_GREY,
         // monthTextColor: '#00adf5',
         indicatorColor: 'blue',
