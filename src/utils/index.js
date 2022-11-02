@@ -2,5 +2,6 @@
  * @copyRight by iHealthScreen
  */
 import {genderList} from './contentList';
+import {showDate} from './time';
 
-export {genderList};
+export {genderList, showDate};

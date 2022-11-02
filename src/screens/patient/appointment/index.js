@@ -27,11 +27,12 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {GradientButton} from '../../../components/Button';
 import {Calendar} from '../../../modules';
 import {useLocale} from '../../../hooks';
+import {showDate} from '../../../utils';
 //
 export default function Appointment({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   //
   useEffect(() => {
@@ -191,7 +192,7 @@ export default function Appointment({navigation}) {
                     fontFamily: fonts.regular,
                     fontSize: 16,
                   }}>
-                  <Text>Date</Text>
+                  <Text>{showDate(selectedDate)}</Text>
                 </View>
                 <View>
                   <Icon name={'calendar-alt'} size={22} color={colors.GRAY} />
@@ -201,7 +202,7 @@ export default function Appointment({navigation}) {
             {isCalendarVisible && (
               <Calendar
                 selectedDate={selectedDate}
-                setSelectedDate={val => setSelectedDate(val)}
+                changeSelectedDate={val => setSelectedDate(val)}
               />
             )}
           </View>

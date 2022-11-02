@@ -124,7 +124,7 @@ export default function Home({navigation}) {
           </View>
           {/*Popular Doctors List*/}
           <View style={styles.gap}></View>
-          <PopularDoctorsList />
+          <PopularDoctorsList navigation={navigation} />
           <View style={styles.gap}></View>
           {/* Package */}
           <PatientPackage />

@@ -4,14 +4,14 @@ import {Calendar} from 'react-native-calendars';
 import {colors, fonts} from '../config';
 /**
  * @param selectedDate : string
- * @param setSelectedDate : callBack method when date is selected, it will be called and pass the selected date
+ * @param changeSelectedDate : callBack method when date is selected, it will be called and pass the selected date
  */
-export default ({selectedDate, setSelectedDate, minDate}) => {
+export default ({selectedDate, changeSelectedDate, minDate}) => {
   return (
     <Calendar
       onDayPress={day => {
         console.log('selected day', day);
-        setSelectedDate(day.dateString);
+        changeSelectedDate(day.dateString);
       }}
       minDate={minDate || Date()}
       // hideExtraDays={true}
@@ -19,17 +19,17 @@ export default ({selectedDate, setSelectedDate, minDate}) => {
       theme={{
         backgroundColor: colors.WHITE,
         calendarBackground: colors.WHITE,
-        textSectionTitleColor: '#b6c1cd',
-        selectedDayBackgroundColor: colors.DARKISH_GREEN,
+        textSectionTitleColor: 'blue',
+        selectedDayBackgroundColor: colors.PRIMARY,
         selectedDayTextColor: colors.WHITE,
-        todayTextColor: colors.DARKISH_GREEN,
-        dayTextColor: colors.CHARCOAL_GREY,
-        textDisabledColor: colors.LIGHT_BLUE_GREY,
+        todayTextColor: colors.SUCCESS,
+        dayTextColor: colors.BLACK,
+        textDisabledColor: colors.GRAY,
         dotColor: '#00adf5',
         // selectedDotColor: 'red',
-        arrowColor: colors.WHITE,
+        arrowColor: colors.PRIMARY,
 
-        disabledArrowColor: colors.CHARCOAL_GREY,
+        disabledArrowColor: colors.GRAY,
         // monthTextColor: '#00adf5',
         indicatorColor: 'blue',
         textDayFontFamily: fonts.regular,
@@ -73,7 +73,7 @@ export default ({selectedDate, setSelectedDate, minDate}) => {
             color: colors.WHITE,
             // marginTop: 6,
             alignItems: 'center',
-            backgroundColor: colors.DARKISH_GREEN,
+            backgroundColor: colors.SECONDARY,
           },
           monthText: {
             color: colors.WHITE,
@@ -90,7 +90,7 @@ export default ({selectedDate, setSelectedDate, minDate}) => {
             alignItems: 'center',
             fontFamily: fonts.semiBold,
             fontSize: 11,
-            color: colors.CHARCOAL_GREY,
+            color: colors.GRAY,
           },
           dayHeader: {
             marginTop: 2,
@@ -100,7 +100,7 @@ export default ({selectedDate, setSelectedDate, minDate}) => {
             fontSize: 12,
             fontFamily: fonts.semiBold,
             fontWeight: '600',
-            color: colors.CHARCOAL_GREY,
+            color: colors.GRAY,
           },
         },
       }}

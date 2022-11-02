@@ -26,11 +26,12 @@ const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
 import StarRating from 'react-native-star-rating';
 import DoctorCard from './DoctorCard';
+import DoctorDetails from './DoctorDetails';
 
 export default function PopularDoctorsList({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
-  const [starCount, setStarCount] = useState(4);
+  const [showDetails, setShowDetails] = useState(false);
   const popularDoctors = ['a', 'b'];
   //
   useEffect(() => {
@@ -92,7 +93,14 @@ export default function PopularDoctorsList({navigation}) {
           extraData={popularDoctors}
           data={popularDoctors}
           renderItem={({item}) => {
-            return <DoctorCard />;
+            return (
+              <DoctorCard
+                showDoctorDetails={() =>
+                  navigation?.navigate(routes.DOCTOR_DETAILS)
+                }
+                navigation={navigation}
+              />
+            );
           }}
         />
       </View>
@@ -102,6 +110,9 @@ export default function PopularDoctorsList({navigation}) {
           See all doctors
         </Text>
       </TouchableOpacity>
+      {/* {showDetails && (
+        <DoctorDetails closeModal={() => setShowDetails(false)} />
+      )} */}
     </View>
   );
 }

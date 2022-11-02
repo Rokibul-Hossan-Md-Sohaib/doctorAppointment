@@ -23,7 +23,12 @@ import MIcon from 'react-native-vector-icons/MaterialIcons';
 import {useLocale} from '../../../hooks';
 import StarRating from 'react-native-star-rating';
 
-export default function DoctorCard({navigation, cardStyle, fav}) {
+export default function DoctorCard({
+  navigation,
+  cardStyle,
+  fav,
+  showDoctorDetails,
+}) {
   const {translations} = useLocale();
   const [starCount, setStarCount] = useState(4);
   //
@@ -37,7 +42,11 @@ export default function DoctorCard({navigation, cardStyle, fav}) {
   };
   //
   return (
-    <View style={[styles.card, cardStyle]}>
+    <TouchableOpacity
+      style={[styles.card, cardStyle]}
+      onPress={() => {
+        showDoctorDetails();
+      }}>
       <View style={{alignItems: 'center', marginRight: 16}}>
         <Image
           style={{
@@ -129,7 +138,7 @@ export default function DoctorCard({navigation, cardStyle, fav}) {
           <MIcon name={'favorite'} size={25} color={colors.TOMATO} />
         </TouchableOpacity>
       )}
-    </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({
