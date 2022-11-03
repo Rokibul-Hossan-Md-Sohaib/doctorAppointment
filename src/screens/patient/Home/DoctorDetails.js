@@ -25,7 +25,7 @@ import {useLocale} from '../../../hooks';
 import StarRating from 'react-native-star-rating';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import PatientWrapper from '../wrapper';
-
+import DoctorCard from './DoctorCard';
 export default function DoctorDetails({navigation, closeModal}) {
   const {translations} = useLocale();
   const [starCount, setStarCount] = useState(4);
@@ -45,11 +45,11 @@ export default function DoctorDetails({navigation, closeModal}) {
     // </AppModal>
     <PatientWrapper
       hdr={true}
-      hdrText={'Asd'}
+      hdrText={'Doctor Profile'}
       back={true}
       navigation={navigation}>
       <KeyboardAwareScrollView style={{flex: 1}}>
-        <Text>asd</Text>
+        <DoctorCard cardStyle={styles.card} />
       </KeyboardAwareScrollView>
     </PatientWrapper>
   );
@@ -62,19 +62,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 171,
     flex: 1,
-    backgroundColor: '#fff',
     marginVertical: 16,
-    marginRight: 10,
-    borderRadius: 8,
-    borderStyle: 'solid',
-    shadowColor: '#000',
+    marginHorizontal: 16,
+    backgroundColor: '#EFF4FA',
+    marginRight: 0,
+    borderRadius: 0,
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 0,
     },
-    shadowOpacity: 0.15,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 0,
     padding: 8,
   },
   textStyle: {
