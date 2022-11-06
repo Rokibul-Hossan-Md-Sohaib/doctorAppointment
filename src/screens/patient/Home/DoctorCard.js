@@ -28,6 +28,7 @@ export default function DoctorCard({
   cardStyle,
   fav,
   showDoctorDetails,
+  fromDetails,
 }) {
   const {translations} = useLocale();
   const [starCount, setStarCount] = useState(4);
@@ -70,66 +71,109 @@ export default function DoctorCard({
         <Text style={{fontSize: 12, fontFamily: fonts.regular}}>
           Training/Courses: PGT(internal medicine)
         </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginVertical: 5,
-            alignItems: 'center',
-            flex: 1,
-          }}>
+
+        {!fromDetails && (
           <View style={{flex: 1}}>
-            <Text style={styles.textStyle}>8 Years</Text>
-            <Text style={[styles.labelStyle]}>Expericence</Text>
-          </View>
-          <View
-            style={{
-              backgroundColor: '#C2C2C2',
-              width: 1,
-              height: 30,
-              marginLeft: 20,
-            }}></View>
-          <View style={{flex: 1, marginHorizontal: 10}}>
-            <StarRating
-              disabled={true}
-              fullStarColor={'#5B5B5B'}
-              containerStyle={{
-                justifyContent: 'flex-start',
+            <View
+              style={{
+                flexDirection: 'row',
+                marginVertical: 5,
                 alignItems: 'center',
-              }}
-              starSize={15}
-              buttonStyle={{paddingRight: 2}}
-              maxStars={5}
-              rating={starCount}
-            />
-            <Text style={[styles.labelStyle]}>Rating</Text>
+                flex: 1,
+              }}>
+              <View style={{flex: 1}}>
+                <Text style={styles.textStyle}>8 Years</Text>
+                <Text style={[styles.labelStyle]}>Expericence</Text>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#C2C2C2',
+                  width: 1,
+                  height: 30,
+                  marginLeft: 20,
+                }}></View>
+              <View style={{flex: 1, marginHorizontal: 10}}>
+                <StarRating
+                  disabled={true}
+                  fullStarColor={'#5B5B5B'}
+                  containerStyle={{
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                  }}
+                  starSize={15}
+                  buttonStyle={{paddingRight: 2}}
+                  maxStars={5}
+                  rating={starCount}
+                />
+                <Text style={[styles.labelStyle]}>Rating</Text>
+              </View>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginVertical: 5,
+                alignItems: 'center',
+                flex: 1,
+              }}>
+              <View style={{flex: 1}}>
+                <Text
+                  numberOfLines={1}
+                  style={{fontSize: 12, fontFamily: fonts.regular}}>
+                  My health app
+                </Text>
+                <Text style={[styles.labelStyle]}>Working</Text>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#C2C2C2',
+                  width: 1,
+                  height: 30,
+                }}></View>
+              <View style={{flex: 1, marginHorizontal: 10}}>
+                <Text style={styles.textStyle}>BDT 500.00</Text>
+                <Text style={[styles.labelStyle]}>Online Fees</Text>
+              </View>
+            </View>
           </View>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginVertical: 5,
-            alignItems: 'center',
-            flex: 1,
-          }}>
-          <View style={{flex: 1}}>
-            <Text
-              numberOfLines={1}
-              style={{fontSize: 12, fontFamily: fonts.regular}}>
-              My health app
-            </Text>
-            <Text style={[styles.labelStyle]}>Working</Text>
-          </View>
+        )}
+
+        {fromDetails && (
           <View
             style={{
-              backgroundColor: '#C2C2C2',
-              width: 1,
-              height: 30,
-            }}></View>
-          <View style={{flex: 1, marginHorizontal: 10}}>
-            <Text style={styles.textStyle}>BDT 500.00</Text>
-            <Text style={[styles.labelStyle]}>Online Fees</Text>
+              flexDirection: 'row',
+              marginVertical: 5,
+              alignItems: 'center',
+            }}>
+            <View style={{flex: 1}}>
+              <Text
+                numberOfLines={1}
+                style={{fontSize: 12, fontFamily: fonts.regular}}>
+                My health app
+              </Text>
+              <Text style={[styles.labelStyle]}>Working</Text>
+            </View>
+            <View
+              style={{
+                backgroundColor: '#C2C2C2',
+                width: 1,
+                height: 30,
+              }}></View>
+            <View style={{flex: 1, marginHorizontal: 10}}>
+              <StarRating
+                disabled={true}
+                fullStarColor={'#5B5B5B'}
+                containerStyle={{
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+                }}
+                starSize={15}
+                buttonStyle={{paddingRight: 2}}
+                maxStars={5}
+                rating={starCount}
+              />
+            </View>
           </View>
-        </View>
+        )}
       </View>
       {fav && (
         <TouchableOpacity

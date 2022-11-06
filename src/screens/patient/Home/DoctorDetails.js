@@ -26,9 +26,17 @@ import StarRating from 'react-native-star-rating';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import PatientWrapper from '../wrapper';
 import DoctorCard from './DoctorCard';
+import {RegularText, SemiboldText, BoldText} from '../../../components/Text';
+
+const option = [
+  {label: 'Appointment', key: 1},
+  {label: 'Expericences', key: 2},
+  {label: 'Reviews', key: 3},
+];
 export default function DoctorDetails({navigation, closeModal}) {
   const {translations} = useLocale();
   const [starCount, setStarCount] = useState(4);
+  const [selectedTab, setSelectedTab] = useState(1);
   //
   useEffect(() => {
     return () => {};
@@ -49,19 +57,219 @@ export default function DoctorDetails({navigation, closeModal}) {
       back={true}
       navigation={navigation}>
       <KeyboardAwareScrollView style={{flex: 1}}>
-        <DoctorCard cardStyle={styles.card} />
+        <DoctorCard cardStyle={styles.card} fromDetails={true} />
+        <View style={{marginHorizontal: 16, flex: 1, flexDirection: 'row'}}>
+          {option.map(item => (
+            <>
+              <TouchableOpacity
+                style={styles.tabBar}
+                key={item.key}
+                onPress={() => {
+                  setSelectedTab(item.key);
+                }}>
+                <Text
+                  style={
+                    selectedTab === item.key ? styles.actText : styles.disText
+                  }>
+                  {item.label}
+                </Text>
+              </TouchableOpacity>
+              {item.key !== 3 && <View style={styles.lineGap}></View>}
+            </>
+          ))}
+        </View>
+        <View style={{flex: 1, marginHorizontal: 16, marginVertical: 16}}>
+          {selectedTab === 1 ? (
+            <Appointment />
+          ) : selectedTab === 2 ? (
+            <Expericences />
+          ) : selectedTab === 3 ? (
+            <Reviews />
+          ) : null}
+        </View>
       </KeyboardAwareScrollView>
     </PatientWrapper>
   );
 }
+//
+const Appointment = () => {
+  return (
+    <>
+      {/* Online Slot */}
+      <View style={{marginHorizontal: 20, marginVertical: 10}}>
+        <BoldText
+          style={{fontSize: 14, color: '#282828'}}
+          title={'Get an Online Appointment'}
+        />
+      </View>
+      <AppointmentCardView />
+      {/* Physical Slot */}
+      <View style={{marginHorizontal: 20, marginVertical: 10}}>
+        <BoldText
+          style={{fontSize: 14, color: '#282828'}}
+          title={'Get a Physical Appointment'}
+        />
+      </View>
+      <AppointmentCardView />
+    </>
+  );
+};
+//appointment card view
+const AppointmentCardView = () => {
+  return (
+    <View style={[styles.smallCard, {flexDirection: 'row'}]}>
+      <View style={{padding: 5, flex: 1, alignItems: 'flex-start'}}>
+        <SemiboldText
+          style={{fontSize: 12, color: '#282828'}}
+          title={'MyHealth Online'}
+        />
+        <View style={{marginVertical: 20}}>
+          <RegularText
+            style={{fontSize: 12, color: '#282828'}}
+            title={'Sat - Thus'}
+          />
+          <RegularText
+            style={{fontSize: 12, color: '#282828'}}
+            title={'4.00 PM to 11 PM'}
+          />
+        </View>
+      </View>
+      <View style={{padding: 5, flex: 1, alignItems: 'flex-end'}}>
+        <SemiboldText
+          style={{fontSize: 12, color: '#282828'}}
+          title={'BDT 150.00'}
+        />
+        <RegularText
+          style={{fontSize: 11, color: '#282828'}}
+          title={'Follow up fee BDT 150.00'}
+        />
+        <View style={{marginVertical: 10}}>
+          <GradientButton
+            onPress={() => {}}
+            cl1={colors.PRIMARY}
+            cl2={colors.SECONDARY}
+            style={{
+              height: 25,
+              width: 170,
+            }}
+            titleStyle={{
+              fontSize: 12,
+              color: colors.WHITE,
+            }}
+            text={'Get an online appointment'}
+            rightIcon={
+              <MIcon name={'arrow-forward-ios'} size={14} color={'#fff'} />
+            }
+            rightIconStyle={{
+              alignItems: 'flex-end',
+            }}
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+//appointment card view
+const ExpericenceCardView = () => {
+  return (
+    <View style={[styles.smallCard, {height: 100}]}>
+      <View style={{paddingLeft: 5}}>
+        <BoldText
+          style={{fontSize: 12, color: '#282828'}}
+          title={'Islami Bank Hospital'}
+        />
+      </View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <View style={{padding: 5, flex: 1, alignItems: 'flex-start'}}>
+          <View style={{marginVertical: 2}}>
+            <RegularText
+              style={{fontSize: 12, color: '#787878'}}
+              title={'Designation'}
+            />
+            <RegularText
+              style={{fontSize: 12, color: '#282828'}}
+              title={'Assistant doctor'}
+            />
+          </View>
+          <View style={{marginVertical: 2}}>
+            <RegularText
+              style={{fontSize: 12, color: '#787878'}}
+              title={'Time period '}
+            />
+            <RegularText
+              style={{fontSize: 12, color: '#282828'}}
+              title={'4.00 PM to 11 PM'}
+            />
+          </View>
+        </View>
+        <View style={{padding: 5, flex: 1}}>
+          <View style={{marginVertical: 2}}>
+            <RegularText
+              style={{
+                fontSize: 12,
+                color: '#787878',
+                textAlign: 'left',
+              }}
+              title={'Department'}
+            />
+            <RegularText
+              style={{
+                fontSize: 12,
+                color: '#282828',
+              }}
+              title={'Head Surgery'}
+            />
+          </View>
+          <View style={{marginVertical: 2}}>
+            <RegularText
+              style={{
+                fontSize: 12,
+                color: '#787878',
+                textAlign: 'left',
+              }}
+              title={'Period'}
+            />
+            <RegularText
+              style={{
+                fontSize: 12,
+                color: '#282828',
+              }}
+              title={'3 years 8 months'}
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+};
+//
+const Expericences = () => {
+  return (
+    <View>
+      <ExpericenceCardView />
+    </View>
+  );
+};
+//
+const Reviews = () => {
+  return (
+    <View>
+      <Text>Reviews</Text>
+    </View>
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   card: {
     flexDirection: 'row',
-    height: 171,
-    flex: 1,
+    height: 110,
     marginVertical: 16,
     marginHorizontal: 16,
     backgroundColor: '#EFF4FA',
@@ -75,6 +283,7 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
     elevation: 0,
     padding: 8,
+    justifyContent: 'center',
   },
   textStyle: {
     fontSize: 14,
@@ -84,5 +293,43 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: fonts.regular,
     color: '#222222',
+  },
+  tabBar: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  lineGap: {
+    backgroundColor: '#C2C2C2',
+    width: 1,
+    height: 20,
+  },
+  disText: {
+    color: '#A1A1A1',
+    fontFamily: fonts.semiBold,
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
+  actText: {
+    color: colors.PRIMARY,
+    fontFamily: fonts.semiBold,
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
+  smallCard: {
+    height: 90,
+    flex: 1,
+    backgroundColor: '#fff',
+    marginHorizontal: 16,
+    borderRadius: 8,
+    borderStyle: 'solid',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 3.84,
+    elevation: 5,
+    padding: 8,
   },
 });
