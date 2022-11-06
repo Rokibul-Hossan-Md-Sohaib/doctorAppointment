@@ -169,6 +169,14 @@ const AppointmentCardView = () => {
     </View>
   );
 };
+//
+const Expericences = () => {
+  return (
+    <View>
+      <ExpericenceCardView />
+    </View>
+  );
+};
 //appointment card view
 const ExpericenceCardView = () => {
   return (
@@ -248,21 +256,68 @@ const ExpericenceCardView = () => {
   );
 };
 //
-const Expericences = () => {
+const Reviews = () => {
   return (
-    <View>
-      <ExpericenceCardView />
+    <>
+      <ReviewCardView />
+    </>
+  );
+};
+//Review card view
+const ReviewCardView = () => {
+  return (
+    <View style={{flex: 1, marginHorizontal: 16}}>
+      <View style={{flexDirection: 'row'}}>
+        <View>
+          <Image
+            style={{
+              width: 44,
+              height: 44,
+              marginVertical: 8,
+              justifyContent: 'flex-start',
+              marginHorizontal: 5,
+            }}
+            resizeMode="contain"
+            source={images.profile_demo}
+          />
+        </View>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <BoldText
+            style={{
+              fontSize: 12,
+            }}
+            title={'Eleanor Pena'}
+          />
+          <StarRating
+            disabled={true}
+            fullStarColor={'#FFB700'}
+            starSize={13}
+            buttonStyle={{paddingRight: 2}}
+            maxStars={5}
+            rating={4}
+          />
+        </View>
+      </View>
+      <View
+        style={{
+          paddingLeft: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <RegularText
+          style={{
+            fontSize: 12,
+            color: '#686868',
+          }}
+          title={
+            "You got your heavy coat out yet? It's getting colder. Only God can make a tree - but you can paint one. I will take some magic white, and a little bit of Vandyke brown and a little touch of yellow. That's why I paint - because I can create the kind of world I want - and I can make this world as happy as I want it."
+          }
+        />
+      </View>
     </View>
   );
 };
 //
-const Reviews = () => {
-  return (
-    <View>
-      <Text>Reviews</Text>
-    </View>
-  );
-};
 const styles = StyleSheet.create({
   container: {
     flex: 1,

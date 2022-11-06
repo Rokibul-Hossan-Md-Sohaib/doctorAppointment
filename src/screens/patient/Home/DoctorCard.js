@@ -46,7 +46,7 @@ export default function DoctorCard({
     <TouchableOpacity
       style={[styles.card, cardStyle]}
       onPress={() => {
-        showDoctorDetails();
+        showDoctorDetails ? showDoctorDetails() : null;
       }}>
       <View style={{alignItems: 'center', marginRight: 16}}>
         <Image
