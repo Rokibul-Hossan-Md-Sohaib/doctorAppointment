@@ -66,6 +66,7 @@ export default function PatientProfile({navigation}) {
             height: 48,
             marginHorizontal: 20,
             marginTop: 16,
+            marginBottom: 16,
           }}
           titleStyle={{
             fontSize: 20,

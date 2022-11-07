@@ -124,7 +124,7 @@ function Items({title, img, navigation, routepath}) {
   const Icon = src => {
     return (
       <Image
-        style={{width: 16, height: 16}}
+        style={{width: 16, height: 16, tintColor: colors.PRIMARY}}
         resizeMode="contain"
         source={src}
       />

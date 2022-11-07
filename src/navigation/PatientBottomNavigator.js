@@ -71,8 +71,9 @@ function PatientBottomNavigator({navigation}) {
           tabBarIcon: ({focused}) => (
             <Image
               style={{
-                width: 100,
-                height: 100,
+                width: 90,
+                height: 90,
+                marginBottom: 5,
               }}
               resizeMode="contain"
               source={images.plus}

@@ -92,9 +92,8 @@ export default function Home({navigation}) {
               </View>
               <View
                 style={{
-                  flex: 1,
+                  width: 60,
                   alignItems: 'flex-end',
-                  marginRight: 10,
                 }}>
                 <Image
                   style={{width: 24, height: 24}}
