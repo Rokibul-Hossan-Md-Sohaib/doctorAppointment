@@ -266,7 +266,7 @@ const Reviews = () => {
 //Review card view
 const ReviewCardView = () => {
   return (
-    <View style={{flex: 1, marginHorizontal: 16}}>
+    <View style={{flex: 1, marginHorizontal: 12}}>
       <View style={{flexDirection: 'row'}}>
         <View>
           <Image
@@ -300,7 +300,7 @@ const ReviewCardView = () => {
       </View>
       <View
         style={{
-          paddingLeft: 10,
+          marginHorizontal: 5,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -308,7 +308,9 @@ const ReviewCardView = () => {
           style={{
             fontSize: 12,
             color: '#686868',
+            textAlign: 'justify',
           }}
+          adjustsFontSizeToFit={true}
           title={
             "You got your heavy coat out yet? It's getting colder. Only God can make a tree - but you can paint one. I will take some magic white, and a little bit of Vandyke brown and a little touch of yellow. That's why I paint - because I can create the kind of world I want - and I can make this world as happy as I want it."
           }

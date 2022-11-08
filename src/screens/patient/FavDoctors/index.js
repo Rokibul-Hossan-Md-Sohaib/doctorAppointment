@@ -64,7 +64,7 @@ export default function FavDoctors({navigation}) {
             renderItem={({item}) => {
               return (
                 <DoctorCard
-                  cardStyle={{marginRight: 0, marginVertical: 10}}
+                  cardStyle={{marginRight: 0, marginVertical: 8}}
                   fav={true}
                 />
               );

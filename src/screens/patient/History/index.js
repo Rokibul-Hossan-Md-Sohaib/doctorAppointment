@@ -98,48 +98,7 @@ function HistoryCard({navigation}) {
               </View>
             </View>
           </View>
-          <View style={{flex: 1, alignItems: 'flex-end', paddingRight: 10}}>
-            <Icon name={'chevron-right'} size={18} color={'#D8D8D8'} />
-          </View>
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <View style={{marginLeft: 16}}>
-          <View style={styles.circleView}>
-            <SemiboldText style={{fontSize: 14}} title={'3'} />
-          </View>
-        </View>
-        <View style={styles.card}>
-          <View style={{flex: 3, marginHorizontal: 8}}>
-            <View style={{marginVertical: 4}}>
-              <RegularText
-                style={{fontSize: 14, color: '#282828'}}
-                title={'At 08.30 PM Sat , 14 September'}
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <View style={{flex: 1}}>
-                <BoldText style={{fontSize: 16}} title={'Dr. Sadia Jahan'} />
-              </View>
-              <View style={{alignItems: 'flex-end'}}>
-                <RegularText
-                  style={{fontSize: 12, color: '#282828'}}
-                  title={'General Physician'}
-                />
-              </View>
-            </View>
-          </View>
-          <View style={{flex: 1, alignItems: 'flex-end', paddingRight: 10}}>
+          <View style={{width: 30, alignItems: 'flex-end', paddingRight: 10}}>
             <Icon name={'chevron-right'} size={18} color={'#D8D8D8'} />
           </View>
         </View>

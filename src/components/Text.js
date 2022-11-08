@@ -5,17 +5,24 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-community/masked-view';
 //RegularText
 const RegularText = props => {
-  return <Text style={[styles.txtStyle, props.style]}>{props.title}</Text>;
+  return (
+    <Text
+      style={[styles.txtStyle, props.style]}
+      adjustsFontSizeToFit={props.adjustsFontSizeToFit}
+    >
+      {props.title}
+    </Text>
+  );
 };
 //RegularText
 const SemiboldText = props => {
   return (
-    <Text style={[styles.txtStyleSemibold, props.style]}>{props.title}</Text>
+    <Text style={[styles.txtStyleSemibold, props.style]} adjustsFontSizeToFit={props.adjustsFontSizeToFit}>{props.title}</Text>
   );
 };
 //RegularText
 const BoldText = props => {
-  return <Text style={[styles.txtStyleBold, props.style]}>{props.title}</Text>;
+  return <Text style={[styles.txtStyleBold, props.style]} adjustsFontSizeToFit={props.adjustsFontSizeToFit}>{props.title}</Text>;
 };
 //Gradient Text
 const GradientText = props => {

@@ -23,6 +23,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
+//
 export default function DoctorCategory({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
@@ -94,7 +95,7 @@ function CategoryCard({navigation}) {
         <Text
           style={{
             color: '#404446',
-            fontSize: 16,
+            fontSize: 14,
             fontFamily: fonts.bold,
           }}>
           Cardiologists
@@ -109,12 +110,13 @@ function CategoryCard({navigation}) {
           213 Doctors
         </Text>
       </View>
-      <View style={{flex: 1, alignItems: 'flex-end', paddingRight: 40}}>
+      <View style={{flex: 1, alignItems: 'flex-end', paddingRight: 10}}>
         <Icon name={'chevron-right'} size={18} color={colors.GRAY} />
       </View>
     </View>
   );
 }
+//
 const styles = StyleSheet.create({
   container: {
     flex: 1,
