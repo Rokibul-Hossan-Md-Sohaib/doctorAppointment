@@ -14,6 +14,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  FlatList,
 } from 'react-native';
 import PatientWrapper from '../wrapper';
 import {images, colors, routes, fonts} from '../../../config';
@@ -25,14 +26,29 @@ const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
 import PopularDoctorsList from './PopularDoctorsList';
 import PatientPackage from './PatientPackage';
+import AppModal from '../../../components/Modal';
+import DoctorCard from './DoctorCard';
+
+const searchRef = React.createRef();
+
 export default function Home({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
   const [searchDoc, setSearchDoc] = useState('');
+  const popularDoctors = ['a', 'b'];
+
   //
   useEffect(() => {
     return () => {};
   }, []);
+  //
+  useEffect(() => {
+    if (searchDoc.length == 1) {
+      searchRef.current.focus();
+    }
+    console.log('asaasas');
+    return () => {};
+  }, [searchDoc.length && searchDoc.length === 1]);
   //onSubmit
   const onSubmit = () => {
     try {
@@ -129,6 +145,52 @@ export default function Home({navigation}) {
           <PatientPackage />
           <View style={styles.gap}></View>
         </KeyboardAwareScrollView>
+        {searchDoc.length > 0 && (
+          <AppModal
+            closeModal={() => setSearchDoc('')}
+            navigation={navigation}
+            hideClose={true}
+            style={{backgroundColor: '#EFF4FA'}}>
+            <View style={{flex: 1, marginVertical: 16}}>
+              <InputField
+                placeholder={translations.search_doctor}
+                value={searchDoc}
+                style={styles.inputFieldStyle}
+                onChangeText={text => {
+                  setSearchDoc(text);
+                }}
+                ref={searchRef}
+                containerStyle={[styles.inputContainerStyle]}
+                returnKeyType="next"
+              />
+              <Icon
+                style={{position: 'absolute', right: 40, top: 26}}
+                name={'search'}
+                size={18}
+                color={colors.GRAY}
+              />
+              <View style={{flex: 1, marginHorizontal: 16}}>
+                <FlatList
+                  showsVerticalScrollIndicator={false}
+                  extraData={popularDoctors}
+                  data={popularDoctors}
+                  renderItem={({item}) => {
+                    return (
+                      <DoctorCard
+                        showDoctorDetails={() => {
+                          setSearchDoc('');
+                          navigation?.navigate(routes.DOCTOR_DETAILS);
+                        }}
+                        cardStyle={{marginRight: 0}}
+                        navigation={navigation}
+                      />
+                    );
+                  }}
+                />
+              </View>
+            </View>
+          </AppModal>
+        )}
       </PatientWrapper>
     );
   }

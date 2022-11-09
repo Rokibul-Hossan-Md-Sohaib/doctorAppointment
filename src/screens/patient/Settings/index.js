@@ -80,6 +80,7 @@ export default function PatientSettings({navigation}) {
           title={translations.pay_his}
           img={images.history1}
           navigation={navigation}
+          routepath={routes.PAYMENT_HISTORY}
         />
         <Items
           title={translations.pay_policy}
