@@ -16,7 +16,12 @@ import {
 } from 'react-native';
 import PatientWrapper from '../wrapper';
 import {images, colors, routes, fonts} from '../../../config';
-import {RegularText, SemiboldText, BoldText} from '../../../components/Text';
+import {
+  RegularText,
+  SemiboldText,
+  BoldText,
+  MultiText,
+} from '../../../components/Text';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useLocale} from '../../../hooks';
@@ -68,64 +73,49 @@ function HistoryCard({navigation}) {
     <View
       style={{
         flexDirection: 'row',
-        marginHorizontal: 8,
+        marginHorizontal: 16,
+        borderBottomColor: '#ddd',
+        borderBottomWidth: 1,
       }}>
-      <View>
-        <View style={{alignItems: 'center', marginRight: 16}}>
-          <Image
-            style={{
-              width: 44,
-              height: 44,
-              marginVertical: 8,
-              justifyContent: 'flex-start',
-              marginHorizontal: 5,
-            }}
-            resizeMode="contain"
-            source={images.profile_demo}
+      <View style={{alignItems: 'center', marginRight: 16}}>
+        <Image
+          style={{
+            width: 44,
+            height: 44,
+            marginVertical: 8,
+            justifyContent: 'flex-start',
+            marginHorizontal: 5,
+          }}
+          resizeMode="contain"
+          source={images.profile_demo}
+        />
+        <View>
+          <RegularText
+            style={{fontSize: 12, color: '#535353'}}
+            adjustsFontSizeToFit={true}
+            title={'20 Sept, 2022'}
           />
-          <View>
-            <RegularText
-              style={{fontSize: 12, color: '#282828'}}
-              adjustsFontSizeToFit={true}
-              title={'20 Sept, 2022'}
-            />
-          </View>
         </View>
       </View>
-
-      <View style={{flex: 1, marginTop: 10}}>
-        <View style={{flexDirection: 'row'}}>
-          <View style={{flex: 1}}>
-            <RegularText
-              style={{fontSize: 12, color: '#282828'}}
-              adjustsFontSizeToFit={true}
-              title={'Appointment fee paid to'}
-            />
-          </View>
-          <View style={{flex: 1}}>
-            <BoldText
-              style={{fontSize: 12, color: '#282828'}}
-              adjustsFontSizeToFit={true}
-              title={'Dr. Rahmat Uddin Khan'}
-            />
-          </View>
-        </View>
-        <View style={{flexDirection: 'row'}}>
-          <View style={{flex: 1}}>
-            <RegularText
-              style={{fontSize: 12, color: '#282828'}}
-              adjustsFontSizeToFit={true}
-              title={'Payment Method: '}
-            />
-          </View>
-          <View style={{flex: 1}}>
-            <BoldText
-              style={{fontSize: 12, color: '#282828'}}
-              adjustsFontSizeToFit={true}
-              title={'Cash'}
-            />
-          </View>
-        </View>
+      <View style={{flex: 1, marginVertical: 10}}>
+        <MultiText
+          style1={{
+            fontSize: 12,
+            color: '#535353',
+            fontFamily: fonts.regular,
+          }}
+          style2={{fontSize: 12, color: '#282828', fontFamily: fonts.bold}}
+          adjustsFontSizeToFit={true}
+          txt1={'Appointment fee paid to '}
+          txt2={'Dr. Rahmat Uddin Khan'}
+        />
+        <MultiText
+          style1={{fontSize: 12, color: '#535353', fontFamily: fonts.regular}}
+          style2={{fontSize: 12, color: '#282828', fontFamily: fonts.bold}}
+          adjustsFontSizeToFit={true}
+          txt1={'Payment Method: '}
+          txt2={'Cash'}
+        />
         <View style={{flex: 1, alignItems: 'flex-end'}}>
           <BoldText
             style={{fontSize: 12, color: '#282828'}}

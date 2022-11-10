@@ -8,8 +8,7 @@ const RegularText = props => {
   return (
     <Text
       style={[styles.txtStyle, props.style]}
-      adjustsFontSizeToFit={props.adjustsFontSizeToFit}
-    >
+      adjustsFontSizeToFit={props.adjustsFontSizeToFit}>
       {props.title}
     </Text>
   );
@@ -17,12 +16,22 @@ const RegularText = props => {
 //RegularText
 const SemiboldText = props => {
   return (
-    <Text style={[styles.txtStyleSemibold, props.style]} adjustsFontSizeToFit={props.adjustsFontSizeToFit}>{props.title}</Text>
+    <Text
+      style={[styles.txtStyleSemibold, props.style]}
+      adjustsFontSizeToFit={props.adjustsFontSizeToFit}>
+      {props.title}
+    </Text>
   );
 };
 //RegularText
 const BoldText = props => {
-  return <Text style={[styles.txtStyleBold, props.style]} adjustsFontSizeToFit={props.adjustsFontSizeToFit}>{props.title}</Text>;
+  return (
+    <Text
+      style={[styles.txtStyleBold, props.style]}
+      adjustsFontSizeToFit={props.adjustsFontSizeToFit}>
+      {props.title}
+    </Text>
+  );
 };
 //Gradient Text
 const GradientText = props => {
@@ -37,6 +46,21 @@ const GradientText = props => {
     </MaskedView>
   );
 };
+//MultiText
+const MultiText = props => {
+  return (
+    <Text
+      style={props.style1}
+      adjustsFontSizeToFit={props.adjustsFontSizeToFit}>
+      {props.txt1}
+      <Text
+        style={props.style2}
+        adjustsFontSizeToFit={props.adjustsFontSizeToFit}>
+        {props.txt2}
+      </Text>
+    </Text>
+  );
+};
 const styles = StyleSheet.create({
   txtStyleRegular: {
     fontFamily: fonts.regular,
@@ -49,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {RegularText, SemiboldText, BoldText, GradientText};
+export {RegularText, SemiboldText, BoldText, GradientText, MultiText};
