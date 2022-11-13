@@ -28,6 +28,7 @@ import PopularDoctorsList from './PopularDoctorsList';
 import PatientPackage from './PatientPackage';
 import AppModal from '../../../components/Modal';
 import DoctorCard from './DoctorCard';
+import {RegularText, SemiboldText, BoldText} from '../../../components/Text';
 
 const searchRef = React.createRef();
 
@@ -191,6 +192,74 @@ export default function Home({navigation}) {
             </View>
           </AppModal>
         )}
+        <TouchableOpacity
+          onPress={() => {}}
+          style={{
+            borderWidth: 1,
+            height: 90,
+            borderRadius: 8,
+            borderColor: colors.PRIMARY,
+            position: 'static',
+            bottom: 0,
+            backgroundColor: '#fff',
+            marginHorizontal: 16,
+          }}>
+          <GradientButton
+            onPress={() => {}}
+            cl1={colors.PRIMARY}
+            cl2={colors.SECONDARY}
+            style={{
+              height: 30,
+            }}
+            titleStyle={{
+              fontSize: 12,
+              color: colors.WHITE,
+              fontFamily: fonts.semiBold,
+            }}
+            text={'You have scheduled Appointment in 3 day 2 hour 38 Minute'}
+          />
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              style={{
+                width: 36,
+                height: 36,
+                borderRadius: 18,
+                marginVertical: 10,
+                justifyContent: 'flex-start',
+                marginHorizontal: 10,
+              }}
+              resizeMode="contain"
+              source={images.profile_demo}
+            />
+            <View style={{marginVertical: 12, flex: 1}}>
+              <RegularText
+                style={{fontSize: 12, color: '#000'}}
+                title={'Dr. Sadia Jahan'}
+              />
+              <RegularText
+                style={{fontSize: 12, color: '#222222'}}
+                title={'General Physician'}
+              />
+            </View>
+            <View
+              style={{
+                backgroundColor: '#C2C2C2',
+                width: 1,
+                height: 30,
+                marginVertical: 12,
+              }}></View>
+            <View style={{marginVertical: 12, marginLeft: 10, flex: 1}}>
+              <RegularText
+                style={{fontSize: 12, color: '#282828'}}
+                title={'Date: 21 Nov 2022'}
+              />
+              <RegularText
+                style={{fontSize: 12, color: '#282828'}}
+                title={'Location: Chamber'}
+              />
+            </View>
+          </View>
+        </TouchableOpacity>
       </PatientWrapper>
     );
   }
