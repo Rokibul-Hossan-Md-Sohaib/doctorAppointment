@@ -46,7 +46,7 @@ const Button = ({
 const GradientButton = props => {
   return (
     <TouchableOpacity
-      disabled={props?.disabled}
+      disabled={props?.disabled || props?.deactivate}
       style={[
         {
           shadowColor: '#000',

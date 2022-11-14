@@ -91,6 +91,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginHorizontal: 16,
+    backgroundColor: '#ffffff',
+    borderRadius: 8,
+    padding: 10,
   },
   circleView: {
     height: 60,

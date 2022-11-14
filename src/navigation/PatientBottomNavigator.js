@@ -38,11 +38,12 @@ function PatientBottomNavigator({navigation}) {
   return (
     <Tab.Navigator
       initialRouteName="PatientHome"
-      screenOptions={{headerShown: false}}
+      screenOptions={{
+        headerShown: false,
+      }}
       activeColor="#554141"
       inactiveColor={'#BBBBBB'}
-      shifting={false}
-      barStyle={{backgroundColor: 'white'}}>
+      shifting={false}>
       <Tab.Screen
         name="PatientHome"
         component={Home}

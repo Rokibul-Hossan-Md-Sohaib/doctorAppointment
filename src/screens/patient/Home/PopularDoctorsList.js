@@ -16,22 +16,19 @@ import {
   Dimensions,
   FlatList,
 } from 'react-native';
-import PatientWrapper from '../wrapper';
 import {images, colors, routes, fonts} from '../../../config';
-import InputField from '../../../components/InputField';
-import {Button, GradientButton} from '../../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
-import StarRating from 'react-native-star-rating';
 import DoctorCard from './DoctorCard';
-import DoctorDetails from './DoctorDetails';
-
+import {
+  RegularText,
+  SemiboldText,
+  BoldText,
+  GradientText,
+} from '../../../components/Text';
 export default function PopularDoctorsList({navigation}) {
   const {translations} = useLocale();
-  const [bInit, setBInit] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
   const popularDoctors = ['a', 'b'];
   //
   useEffect(() => {
@@ -106,9 +103,13 @@ export default function PopularDoctorsList({navigation}) {
       </View>
 
       <TouchableOpacity style={{marginHorizontal: 16}} onPress={() => {}}>
-        <Text style={[styles.textStyle, {color: '#484848', fontSize: 16}]}>
+        <GradientText
+          onPress={() => {}}
+          cl1={colors.PRIMARY}
+          cl2={colors.SECONDARY}
+          style={{fontSize: 16}}>
           See all doctors
-        </Text>
+        </GradientText>
       </TouchableOpacity>
       {/* {showDetails && (
         <DoctorDetails closeModal={() => setShowDetails(false)} />

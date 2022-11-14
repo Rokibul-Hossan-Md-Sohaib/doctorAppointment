@@ -44,6 +44,7 @@ const Routes = {
   PAYMENT_WEB: 'Payment Web',
   PAYMENT_SUCCESS: 'Payment Success',
   PAYMENT_HISTORY: 'Payment History',
+  CUR_APPOINTMENT: 'Current Appointment',
   VIDEO: 'Video',
   CREATE_SCHEDULE: 'Create Schedule',
   COMPONENT_LIST: 'Component List',

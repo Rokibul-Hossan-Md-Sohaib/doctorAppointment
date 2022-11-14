@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   Dimensions,
   FlatList,
+  SafeAreaView,
 } from 'react-native';
 import PatientWrapper from '../wrapper';
 import {images, colors, routes, fonts} from '../../../config';
@@ -152,7 +153,7 @@ export default function Home({navigation}) {
             navigation={navigation}
             hideClose={true}
             style={{backgroundColor: '#EFF4FA'}}>
-            <View style={{flex: 1, marginVertical: 16}}>
+            <SafeAreaView style={{flex: 1, marginVertical: 16}}>
               <InputField
                 placeholder={translations.search_doctor}
                 value={searchDoc}
@@ -165,7 +166,7 @@ export default function Home({navigation}) {
                 returnKeyType="next"
               />
               <Icon
-                style={{position: 'absolute', right: 40, top: 26}}
+                style={{position: 'absolute', right: 40, top: 56}}
                 name={'search'}
                 size={18}
                 color={colors.GRAY}
@@ -189,11 +190,13 @@ export default function Home({navigation}) {
                   }}
                 />
               </View>
-            </View>
+            </SafeAreaView>
           </AppModal>
         )}
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => {
+            navigation?.navigate(routes.CUR_APPOINTMENT);
+          }}
           style={{
             borderWidth: 1,
             height: 90,
@@ -205,7 +208,9 @@ export default function Home({navigation}) {
             marginHorizontal: 16,
           }}>
           <GradientButton
-            onPress={() => {}}
+            onPress={() => {
+              navigation?.navigate(routes.CUR_APPOINTMENT);
+            }}
             cl1={colors.PRIMARY}
             cl2={colors.SECONDARY}
             style={{
