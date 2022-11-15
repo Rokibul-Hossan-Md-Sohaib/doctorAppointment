@@ -32,6 +32,7 @@ import {
   BoldText,
   GradientText,
 } from '../../../components/Text';
+import {AlertModal} from '../../../components/Modal';
 
 //
 export default function CurAppointment({navigation}) {
@@ -253,97 +254,49 @@ export default function CurAppointment({navigation}) {
         }}
         text={'Cancel Appointment'}
       />
-      {showModal && <AlertModal hideModal={() => setShowModal(false)} />}
+      {showModal && (
+        <AlertModal hideModal={() => setShowModal(false)} style={{}}>
+          <BoldText
+            style={{fontSize: 18, color: '#000', marginVertical: 16}}
+            title={'Cancel Appointment?'}
+          />
+          <SemiboldText
+            style={{fontSize: 14, color: '#72777A'}}
+            title={'Are you sure want to cancel this appointment?'}
+          />
+          <GradientButton
+            onPress={() => setShowModal(true)}
+            cl1={colors.PRIMARY}
+            cl2={colors.SECONDARY}
+            style={{
+              height: 48,
+              width: 300,
+              marginVertical: 16,
+            }}
+            titleStyle={{
+              fontSize: 16,
+              color: colors.WHITE,
+              fontFamily: fonts.bold,
+            }}
+            text={'Cancel'}
+          />
+          <TouchableOpacity onPress={() => setShowModal(false)}>
+            <GradientText
+              onPress={() => {}}
+              cl1={colors.PRIMARY}
+              cl2={colors.SECONDARY}
+              style={{fontSize: 14}}>
+              No, thanks
+            </GradientText>
+          </TouchableOpacity>
+        </AlertModal>
+      )}
     </PatientWrapper>
   );
 }
-//
-const AlertModal = ({hideModal}) => {
-  return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={true}
-      onRequestClose={() => {
-        hideModal();
-      }}>
-      <TouchableWithoutFeedback onPress={() => hideModal()}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.5)',
-          }}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <BoldText
-                style={{fontSize: 18, color: '#000', marginVertical: 16}}
-                title={'Cancel Appointment?'}
-              />
-              <SemiboldText
-                style={{fontSize: 14, color: '#72777A'}}
-                title={'Are you sure want to cancel this appointment?'}
-              />
-              <GradientButton
-                onPress={() => setShowModal(true)}
-                cl1={colors.PRIMARY}
-                cl2={colors.SECONDARY}
-                style={{
-                  height: 48,
-                  width: 300,
-                  marginVertical: 16,
-                }}
-                titleStyle={{
-                  fontSize: 16,
-                  color: colors.WHITE,
-                  fontFamily: fonts.bold,
-                }}
-                text={'Cancel'}
-              />
-              <TouchableOpacity onPress={() => hideModal()}>
-                <GradientText
-                  onPress={() => {}}
-                  cl1={colors.PRIMARY}
-                  cl2={colors.SECONDARY}
-                  style={{fontSize: 14}}>
-                  No, thanks
-                </GradientText>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </Modal>
-  );
-};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    height: 200,
-    width: '90%',
-    // marginHorizontal: 16,
-    backgroundColor: '#fff',
-    margin: 20,
-    borderRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    alignItems: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
   },
 });

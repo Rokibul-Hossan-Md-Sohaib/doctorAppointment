@@ -29,6 +29,7 @@ import {GradientButton} from '../../../components/Button';
 import {Calendar} from '../../../modules';
 import {useLocale} from '../../../hooks';
 import {showDate} from '../../../utils';
+import Department from '../DoctorCategory/Department';
 //
 export default function Appointment({navigation}) {
   const {translations} = useLocale();
@@ -96,20 +97,7 @@ export default function Appointment({navigation}) {
           </View>
           {/* Department Select */}
           <View style={{flex: 1, marginVertical: 8}}>
-            <BoldText
-              style={{fontSize: 16, color: '#282828'}}
-              title={'Department'}
-            />
-            <FlatList
-              style={{marginLeft: 16}}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              extraData={[1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]}
-              data={[1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]}
-              renderItem={({item}) => {
-                return <CategoryCard navigation={navigation} />;
-              }}
-            />
+            <Department />
           </View>
           {/* Doctor */}
           <View style={{flexDirection: 'row'}}>
@@ -131,7 +119,7 @@ export default function Appointment({navigation}) {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.row}>
+          <View style={[styles.row, {marginLeft: 16}]}>
             <View>
               <Image
                 style={{

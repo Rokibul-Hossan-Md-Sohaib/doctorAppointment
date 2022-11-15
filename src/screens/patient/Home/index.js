@@ -27,7 +27,7 @@ const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
 import PopularDoctorsList from './PopularDoctorsList';
 import PatientPackage from './PatientPackage';
-import AppModal from '../../../components/Modal';
+import {AppModal} from '../../../components/Modal';
 import DoctorCard from './DoctorCard';
 import {RegularText, SemiboldText, BoldText} from '../../../components/Text';
 
@@ -48,7 +48,6 @@ export default function Home({navigation}) {
     if (searchDoc.length == 1) {
       searchRef.current.focus();
     }
-    console.log('asaasas');
     return () => {};
   }, [searchDoc.length && searchDoc.length === 1]);
   //onSubmit

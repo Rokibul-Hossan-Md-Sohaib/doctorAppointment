@@ -19,7 +19,7 @@ import {
 import {images, colors, routes, fonts} from '../../../config';
 import InputField from '../../../components/InputField';
 import {Button, GradientButton} from '../../../components/Button';
-import AppModal from '../../../components/Modal';
+import {AppModal} from '../../../components/Modal';
 import MIcon from 'react-native-vector-icons/MaterialIcons';
 import {useLocale} from '../../../hooks';
 import StarRating from 'react-native-star-rating';
