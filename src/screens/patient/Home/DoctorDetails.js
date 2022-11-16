@@ -48,9 +48,6 @@ export default function DoctorDetails({navigation, closeModal}) {
   };
   //
   return (
-    // <AppModal closeModal={closeModal} navigation={navigation}>
-    //   <Text>asd</Text>
-    // </AppModal>
     <PatientWrapper
       hdr={true}
       hdrText={'Doctor Profile'}

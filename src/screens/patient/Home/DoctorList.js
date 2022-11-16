@@ -23,10 +23,10 @@ import {Button, GradientButton} from '../../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
-import {AppModal} from '../../../components/Modal';
 import DoctorCard from './DoctorCard';
 import {RegularText, SemiboldText, BoldText} from '../../../components/Text';
 import Department from '../DoctorCategory/Department';
+import PatientWrapper from '../wrapper';
 
 const searchRef = React.createRef();
 
@@ -53,16 +53,20 @@ export default function AllDoctorList({navigation, closeModal}) {
     );
   } else {
     return (
-      <AppModal
-        closeModal={() => closeModal()}
-        navigation={navigation}
-        hideClose={true}
-        style={{backgroundColor: '#EFF4FA'}}>
-        <SafeAreaView style={{flex: 1, marginVertical: 16}}>
+      <PatientWrapper
+        hdr={true}
+        hdrText={'Doctor List'}
+        back={true}
+        navigation={navigation}>
+        <View style={{flex: 1, marginHorizontal: 16}}>
           <View style={{height: 80, marginVertical: 8}}>
             <Department />
           </View>
-          <View style={{flex: 1, marginHorizontal: 16}}>
+          <View style={{flex: 1}}>
+            <BoldText
+              style={{fontSize: 16, color: '#282828'}}
+              title={'Doctor List'}
+            />
             <FlatList
               showsVerticalScrollIndicator={false}
               extraData={popularDoctors}
@@ -80,8 +84,8 @@ export default function AllDoctorList({navigation, closeModal}) {
               }}
             />
           </View>
-        </SafeAreaView>
-      </AppModal>
+        </View>
+      </PatientWrapper>
     );
   }
 }

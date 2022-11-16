@@ -27,11 +27,9 @@ import {
   BoldText,
   GradientText,
 } from '../../../components/Text';
-import AllDoctorList from './DoctorList';
 
 export default function PopularDoctorsList({navigation}) {
   const {translations} = useLocale();
-  const [seeAllDoctor, setSeeAllDoctor] = useState(false);
   const popularDoctors = ['a', 'b'];
   //
   useEffect(() => {
@@ -108,7 +106,7 @@ export default function PopularDoctorsList({navigation}) {
       <TouchableOpacity
         style={{marginHorizontal: 16}}
         onPress={() => {
-          setSeeAllDoctor(true);
+          navigation?.navigate(routes.DOCTOR_LIST);
         }}>
         <GradientText
           cl1={colors.PRIMARY}
@@ -117,12 +115,6 @@ export default function PopularDoctorsList({navigation}) {
           See all doctors
         </GradientText>
       </TouchableOpacity>
-      {seeAllDoctor && (
-        <AllDoctorList
-          navigation={navigation}
-          closeModal={() => setSeeAllDoctor(false)}
-        />
-      )}
     </View>
   );
 }

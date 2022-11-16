@@ -34,6 +34,7 @@ const AppModal = ({children, navigation, closeModal, hideClose, style}) => {
             padding: 15,
             paddingTop: 40,
             alignItems: 'flex-end',
+            backgroundColor: style.backgroundColor,
           }}
           onPress={() => {
             closeModal();
@@ -41,7 +42,7 @@ const AppModal = ({children, navigation, closeModal, hideClose, style}) => {
           <MIcon
             name="close"
             color={colors.GRAY}
-            size={25}
+            size={30}
             containerStyle={{alignSelf: 'flex-end'}}
           />
         </TouchableOpacity>

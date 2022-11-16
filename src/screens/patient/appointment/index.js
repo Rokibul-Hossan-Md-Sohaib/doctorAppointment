@@ -108,7 +108,11 @@ export default function Appointment({navigation}) {
               />
             </View>
             <View style={{flex: 1, alignItems: 'flex-end'}}>
-              <TouchableOpacity style={{}} onPress={() => {}}>
+              <TouchableOpacity
+                style={{}}
+                onPress={() => {
+                  navigation?.navigate(routes.DOCTOR_LIST);
+                }}>
                 <GradientText
                   onPress={() => {}}
                   cl1={colors.PRIMARY}

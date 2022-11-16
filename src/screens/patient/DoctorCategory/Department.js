@@ -49,7 +49,7 @@ export default function Department({navigation}) {
     <View style={{}}>
       <BoldText style={{fontSize: 16, color: '#282828'}} title={'Department'} />
       <FlatList
-        style={{marginLeft: 8}}
+        style={{marginLeft: 0}}
         horizontal
         showsHorizontalScrollIndicator={false}
         extraData={[1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]}

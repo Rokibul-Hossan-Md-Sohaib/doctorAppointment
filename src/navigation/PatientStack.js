@@ -16,6 +16,7 @@ import Appointment from '../screens/patient/appointment';
 import DoctorDetails from '../screens/patient/Home/DoctorDetails';
 import CurAppointment from '../screens/patient/Home/CurrentAppointment';
 import PatientPaymentHistory from '../screens/patient/Payment/PaymentHistory';
+import AllDoctorList from '../screens/patient/Home/DoctorList';
 import PatientBottomNavigator from '../navigation/PatientBottomNavigator';
 const Stack = createStackNavigator();
 
@@ -49,6 +50,7 @@ export default function PatientStack() {
           name={routes.CUR_APPOINTMENT}
           component={CurAppointment}
         />
+        <Stack.Screen name={routes.DOCTOR_LIST} component={AllDoctorList} />
       </Stack.Navigator>
     </NavigationContainer>
   );

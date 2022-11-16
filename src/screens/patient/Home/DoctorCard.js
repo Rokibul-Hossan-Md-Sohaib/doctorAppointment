@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     height: 171,
     flex: 1,
     backgroundColor: '#fff',
-    marginVertical: 16,
+    marginVertical: 8,
     marginRight: 10,
     borderRadius: 8,
     borderStyle: 'solid',
