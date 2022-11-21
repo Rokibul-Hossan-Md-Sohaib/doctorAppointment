@@ -30,12 +30,16 @@ import {Calendar} from '../../../modules';
 import {useLocale} from '../../../hooks';
 import {showDate} from '../../../utils';
 import Department from '../DoctorCategory/Department';
+import PatientCard from '../ManagePatients/PatientCard';
+import {AppModal} from '../../../components/Modal';
+
 //
 export default function Appointment({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [showPatients, setShowPatients] = useState(false);
   //
   useEffect(() => {
     return () => {};
@@ -43,6 +47,13 @@ export default function Appointment({navigation}) {
   //onSubmit
   const onSubmit = () => {
     try {
+    } catch (err) {}
+  };
+  //selectPatient
+  const selectPatient = patient => {
+    try {
+      console.log('patient:::', patient);
+      setShowPatients(false);
     } catch (err) {}
   };
   //
@@ -74,7 +85,11 @@ export default function Appointment({navigation}) {
               />
             </View>
             <View style={{flex: 1, alignItems: 'flex-end'}}>
-              <TouchableOpacity style={{}} onPress={() => {}}>
+              <TouchableOpacity
+                style={{}}
+                onPress={() => {
+                  setShowPatients(true);
+                }}>
                 <GradientText
                   onPress={() => {}}
                   cl1={colors.PRIMARY}
@@ -231,36 +246,25 @@ export default function Appointment({navigation}) {
           }}
           text="Make Payment & Confirm"
         />
+        {showPatients && (
+          <AppModal
+            closeModal={() => setShowPatients(false)}
+            navigation={navigation}
+            hideClose={false}
+            style={{backgroundColor: '#EFF4FA'}}>
+            <View style={{flex: 1, marginVertical: 16}}>
+              <KeyboardAwareScrollView style={{flex: 1}}>
+                <PatientCard
+                  navigation={navigation}
+                  selectPatient={selectPatient}
+                />
+              </KeyboardAwareScrollView>
+            </View>
+          </AppModal>
+        )}
       </PatientWrapper>
     );
   }
-}
-//
-//CategoryCard
-function CategoryCard({navigation}) {
-  const {translations} = useLocale();
-
-  return (
-    <View style={styles.card}>
-      <View style={{flex: 1, alignItems: 'flex-start'}}>
-        <Image
-          style={{width: 20, height: 20}}
-          resizeMode="contain"
-          source={images.heart}
-        />
-      </View>
-      <View style={{flex: 1, alignItems: 'center'}}>
-        <Text
-          style={{
-            color: '#404446',
-            fontSize: 14,
-            fontFamily: fonts.bold,
-          }}>
-          Cardiologists
-        </Text>
-      </View>
-    </View>
-  );
 }
 //
 const styles = StyleSheet.create({

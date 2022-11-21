@@ -9,6 +9,7 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
+  SafeAreaView,
 } from 'react-native';
 import {colors} from '../config';
 import MIcon from 'react-native-vector-icons/MaterialIcons';
@@ -28,29 +29,26 @@ const AppModal = ({children, navigation, closeModal, hideClose, style}) => {
       onRequestClose={() => {
         // Alert.alert('Modal has been closed.');
       }}>
-      {!hideClose && (
-        <TouchableOpacity
-          style={{
-            padding: 15,
-            paddingTop: 40,
-            alignItems: 'flex-end',
-            backgroundColor: style.backgroundColor,
-          }}
-          onPress={() => {
-            closeModal();
-          }}>
-          <MIcon
-            name="close"
-            color={colors.GRAY}
-            size={30}
-            containerStyle={{alignSelf: 'flex-end'}}
-          />
-        </TouchableOpacity>
-      )}
-
-      <View style={{flex: 1, backgroundColor: style.backgroundColor}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: style.backgroundColor}}>
+        {!hideClose && (
+          <TouchableOpacity
+            style={{
+              padding: 15,
+              alignItems: 'flex-end',
+            }}
+            onPress={() => {
+              closeModal();
+            }}>
+            <MIcon
+              name="close"
+              color={colors.GRAY}
+              size={30}
+              containerStyle={{alignSelf: 'flex-end'}}
+            />
+          </TouchableOpacity>
+        )}
         {children}
-      </View>
+      </SafeAreaView>
     </Modal>
   );
 }; //AppModal

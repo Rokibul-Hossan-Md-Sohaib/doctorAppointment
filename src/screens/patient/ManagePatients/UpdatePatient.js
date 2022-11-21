@@ -13,15 +13,15 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
-  Modal,
 } from 'react-native';
 import {images, colors, routes, fonts} from '../../../config';
 import {Button, GradientButton} from '../../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ProfileView from '../Profile/ProfileView';
-
+import {AppModal} from '../../../components/Modal';
+/*
+ */
 export default function UpdatePatient({
   navigation,
   modalShow,
@@ -33,59 +33,43 @@ export default function UpdatePatient({
   useEffect(() => {
     return () => {};
   }, []);
-  //onSubmit
+  //
   const onSubmit = () => {
     try {
     } catch (err) {}
   };
-  //
+  //onSubmit
   return (
-    <Modal
-      animationType="slide"
-      transparent={false}
-      visible={true}
-      onRequestClose={() => {
-        // Alert.alert('Modal has been closed.');
-      }}>
-      <TouchableOpacity
-        style={{
-          padding: 15,
-          paddingTop: 40,
-        }}
-        onPress={() => {
-          setModalShow(false);
-        }}>
-        <Icon
-          name="times-circle"
-          type="font-awesome-5"
-          color={colors.TOMATO}
-          size={25}
-          containerStyle={{alignSelf: 'flex-end'}}
+    <AppModal
+      closeModal={() => setModalShow(false)}
+      navigation={navigation}
+      hideClose={false}
+      style={{backgroundColor: '#EFF4FA'}}>
+      <View style={{flex: 1, marginVertical: 16}}>
+        <KeyboardAwareScrollView style={{flex: 1}}>
+          <ProfileView navigation={navigation} item={item} />
+        </KeyboardAwareScrollView>
+        {/* Update/Add Button */}
+        <GradientButton
+          onPress={() => {}}
+          cl1={colors.PRIMARY}
+          cl2={colors.SECONDARY}
+          style={{
+            height: 48,
+            marginTop: 16,
+            right: 20,
+            left: 20,
+            position: 'absolute',
+            bottom: 30,
+          }}
+          titleStyle={{
+            fontSize: 20,
+            color: colors.WHITE,
+          }}
+          text="Update"
         />
-      </TouchableOpacity>
-      <KeyboardAwareScrollView style={{flex: 1}}>
-        <ProfileView navigation={navigation} item={item} />
-      </KeyboardAwareScrollView>
-      {/* Update/Add Button */}
-      <GradientButton
-        onPress={() => {}}
-        cl1={colors.PRIMARY}
-        cl2={colors.SECONDARY}
-        style={{
-          height: 48,
-          marginTop: 16,
-          right: 20,
-          left: 20,
-          position: 'absolute',
-          bottom: 30,
-        }}
-        titleStyle={{
-          fontSize: 20,
-          color: colors.WHITE,
-        }}
-        text="Update"
-      />
-    </Modal>
+      </View>
+    </AppModal>
   );
 }
 const styles = StyleSheet.create({

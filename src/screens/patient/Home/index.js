@@ -15,7 +15,6 @@ import {
   TouchableOpacity,
   Dimensions,
   FlatList,
-  SafeAreaView,
 } from 'react-native';
 import PatientWrapper from '../wrapper';
 import {images, colors, routes, fonts} from '../../../config';
@@ -152,7 +151,7 @@ export default function Home({navigation}) {
             navigation={navigation}
             hideClose={true}
             style={{backgroundColor: '#EFF4FA'}}>
-            <SafeAreaView style={{flex: 1, marginVertical: 16}}>
+            <View style={{flex: 1, marginVertical: 16}}>
               <InputField
                 placeholder={translations.search_doctor}
                 value={searchDoc}
@@ -189,7 +188,7 @@ export default function Home({navigation}) {
                   }}
                 />
               </View>
-            </SafeAreaView>
+            </View>
           </AppModal>
         )}
         <TouchableOpacity
