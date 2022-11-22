@@ -58,7 +58,8 @@ export default function PatientPaymentHistory({navigation}) {
         hdrText={'Payment History'}
         back={true}
         navigation={navigation}>
-        <KeyboardAwareScrollView style={{flex: 1}}>
+        <KeyboardAwareScrollView style={{flex: 1, marginVertical: 16}}>
+          <HistoryCard navigation={navigation} />
           <HistoryCard navigation={navigation} />
         </KeyboardAwareScrollView>
       </PatientWrapper>
@@ -68,14 +69,17 @@ export default function PatientPaymentHistory({navigation}) {
 //HistoryCard
 function HistoryCard({navigation}) {
   const {translations} = useLocale();
-
+  //
   return (
     <View
       style={{
         flexDirection: 'row',
         marginHorizontal: 16,
-        borderBottomColor: '#ddd',
-        borderBottomWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 10,
+        borderWidth: 1,
+        padding: 5,
+        marginBottom: 8,
       }}>
       <View style={{alignItems: 'center', marginRight: 16}}>
         <Image
@@ -116,7 +120,7 @@ function HistoryCard({navigation}) {
           txt1={'Payment Method: '}
           txt2={'Cash'}
         />
-        <View style={{flex: 1, alignItems: 'flex-end'}}>
+        <View style={{flex: 1, alignItems: 'flex-end', marginTop: 15}}>
           <BoldText
             style={{fontSize: 12, color: '#282828'}}
             adjustsFontSizeToFit={true}

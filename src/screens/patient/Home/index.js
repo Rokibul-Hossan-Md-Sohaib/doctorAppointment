@@ -163,12 +163,7 @@ export default function Home({navigation}) {
                 containerStyle={[styles.inputContainerStyle]}
                 returnKeyType="next"
               />
-              <Icon
-                style={{position: 'absolute', right: 40, top: 56}}
-                name={'search'}
-                size={18}
-                color={colors.GRAY}
-              />
+
               <View style={{flex: 1, marginHorizontal: 16}}>
                 <FlatList
                   showsVerticalScrollIndicator={false}
