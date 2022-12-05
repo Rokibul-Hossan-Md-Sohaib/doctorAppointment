@@ -22,7 +22,7 @@ import {Button, GradientButton} from '../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useLocale} from '../../hooks';
-
+import AuthService from '../../services/AuthService';
 const win = Dimensions.get('window');
 const passwordRef = React.createRef();
 const goToPassword = event => {
@@ -60,8 +60,13 @@ export default function Login({navigation}) {
     return !_.isEmpty(username) && !_.isEmpty(password);
   };
   //
-  const signInPress = () => {
+  const signInPress = async () => {
     try {
+      const data = await AuthService.login({
+        username: '01733714009',
+        password: '12345678',
+      });
+      console.log('data:::', data);
     } catch (err) {}
   };
   //

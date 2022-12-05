@@ -1,3 +1,6 @@
+/*
+ * @copyRight by iHealthScreen
+ */
 import * as React from 'react';
 import {
   createNavigationContainerRef,

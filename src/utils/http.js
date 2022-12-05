@@ -1,8 +1,10 @@
+/*
+ * @copyRight by iHealthScreen
+ */
 import axios from 'axios';
 import _ from 'lodash';
 import {getToken, setToken} from './index';
-import AuthService from '../services/AuthService';
-import {API_BASE_URL} from '../config';
+import api from '../config';
 const axiosInstance = axios.create();
 
 // request interceptor
@@ -15,7 +17,7 @@ axiosInstance.interceptors.request.use(async req => {
   }
   return req;
 });
-
+// response interceptor
 axiosInstance.interceptors.response.use(async response => {
   console.log('responseresponse::', response);
   return response;
