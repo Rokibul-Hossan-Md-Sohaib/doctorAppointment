@@ -1,7 +1,7 @@
 /*
  * @copyRight by iHealthScreen
  */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NavigationService from '../../services/NavigationService';
@@ -23,6 +23,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useLocale} from '../../hooks';
 import AuthService from '../../services/AuthService';
+import {setToken} from '../../utils';
+import AuthContext from '../../shared/AuthContext';
+
 const win = Dimensions.get('window');
 const passwordRef = React.createRef();
 const goToPassword = event => {
@@ -32,6 +35,8 @@ const goToPassword = event => {
 export default function Login({navigation}) {
   // const dispatch = useDispatch();
   // const loginState = useSelector(state => state.login);
+  const {signIn, isLoading} = useContext(AuthContext);
+  console.log('isLoadingisLoadingisLoadingisLoading:::', isLoading);
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
   const [pShow, setPshow] = useState(false);
@@ -62,11 +67,15 @@ export default function Login({navigation}) {
   //
   const signInPress = async () => {
     try {
-      const data = await AuthService.login({
+      const resp = await AuthService.login({
         username: '01733714009',
         password: '12345678',
       });
-      console.log('data:::', data);
+      console.log('resp:::', resp);
+      if (resp?.status === 201) {
+        // await setToken(resp?.data?.token);
+        await signIn(resp?.data?.token);
+      }
     } catch (err) {}
   };
   //

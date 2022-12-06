@@ -17,7 +17,7 @@ import {enableScreens} from 'react-native-screens';
 import {ProvideLocalization} from './hooks/use-locale';
 
 //
-import Navigator from './navigation';
+import AppNavigator from './navigation';
 import store from './rdx/reducers';
 import {colors} from './config';
 import {routes} from './config';
@@ -35,7 +35,7 @@ export default function App() {
     return (
       <ProvideLocalization>
         <Provider store={store}>
-          <Navigator />
+          <AppNavigator />
         </Provider>
       </ProvideLocalization>
     );
@@ -47,7 +47,7 @@ export default function App() {
           barStyle="light-content"
         />
         <ProvideLocalization>
-          <Navigator />
+          <AppNavigator />
         </ProvideLocalization>
       </Provider>
     );
