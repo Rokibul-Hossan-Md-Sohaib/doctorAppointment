@@ -1,7 +1,7 @@
 /*
  * @copyRight by iHealthScreen
  */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NavigationService from '../../../services/NavigationService';
@@ -22,9 +22,13 @@ import {Button, GradientButton} from '../../../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useLocale} from '../../../hooks';
+import AuthContext from '../../../shared/AuthContext';
+
 export default function PatientSettings({navigation}) {
   const {translations} = useLocale();
   const [searchDoc, setSearchDoc] = useState('');
+  const {signOut, isLoading} = useContext(AuthContext);
+
   //
   useEffect(() => {
     return () => {};
@@ -115,12 +119,16 @@ export default function PatientSettings({navigation}) {
           title={translations.logout}
           img={images.logout}
           navigation={navigation}
+          onPress={() => {
+            signOut().catch();
+          }}
+          routepath={'logout'}
         />
       </KeyboardAwareScrollView>
     </PatientWrapper>
   );
 }
-function Items({title, img, navigation, routepath}) {
+function Items({title, img, navigation, routepath, onPress}) {
   //
   const Icon = src => {
     return (
@@ -133,7 +141,11 @@ function Items({title, img, navigation, routepath}) {
   };
   //
   const navigateToPage = path => {
-    navigation?.navigate(path);
+    if (path === 'logout') {
+      onPress();
+    } else {
+      navigation?.navigate(path);
+    }
   };
   //
   return (

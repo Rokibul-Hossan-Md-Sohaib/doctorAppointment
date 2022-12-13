@@ -3,6 +3,20 @@
  */
 import {genderList} from './contentList';
 import {showDate} from './time';
-import {setToken, getToken, setItem, getItem} from './asyncStorage';
+import {
+  setToken,
+  getToken,
+  removeToken,
+  setItem,
+  getItem,
+} from './asyncStorage';
 
-export {genderList, showDate, setToken, getToken, setItem, getItem};
+export {
+  genderList,
+  showDate,
+  setToken,
+  getToken,
+  removeToken,
+  setItem,
+  getItem,
+};

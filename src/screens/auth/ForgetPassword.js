@@ -22,6 +22,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../hooks';
+import AuthService from '../../services/AuthService';
 
 export default function ForgetPassword({navigation}) {
   const {translations} = useLocale();
@@ -35,9 +36,20 @@ export default function ForgetPassword({navigation}) {
     return !_.isEmpty(username);
   };
   //
-  const onSubmit = () => {
+  const onSubmit = async () => {
     try {
-      navigation?.navigate(routes.VERIFICATION, {username: username});
+      const resp = await AuthService.forgotPassword({
+        // username: username,
+        username: '01733714009',
+      });
+      console.log('resp:::', resp);
+      if (resp?.status === 201) {
+        // await setToken(resp?.data?.token);
+        navigation?.navigate(routes.VERIFICATION, {
+          userId: resp?.data?.userId,
+          username: username,
+        });
+      }
     } catch (err) {}
   };
   //

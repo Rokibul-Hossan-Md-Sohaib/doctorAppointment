@@ -19,6 +19,14 @@ export const getToken = async () => {
     return null;
   }
 };
+//Auth user token get
+export const removeToken = async () => {
+  try {
+    await AsyncStorage.removeItem('token');
+  } catch (e) {
+    return null;
+  }
+};
 //setItem
 export const setItem = async (key, value) => {
   try {

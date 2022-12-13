@@ -29,12 +29,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../hooks';
+import AuthService from '../../services/AuthService';
 
 export default function Verification({navigation, route}) {
   const {translations} = useLocale();
 
-  const {username} = route.params;
-  console.log('usernameusername', username, route);
+  const {userId, username} = route.params;
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -50,8 +50,16 @@ export default function Verification({navigation, route}) {
     return !_.isEmpty(username);
   };
   //
-  const onSubmit = () => {
+  const onSubmit = async () => {
     try {
+      const resp = await AuthService.resetPassword({
+        userId: userId,
+      });
+      console.log('resp:::', resp);
+      if (resp?.status === 201) {
+        // await setToken(resp?.data?.token);
+        navigation?.navigate(routes.VERIFICATION, {username, userId});
+      }
     } catch (err) {}
   };
   //

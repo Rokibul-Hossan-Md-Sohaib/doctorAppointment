@@ -68,8 +68,8 @@ export default function Login({navigation}) {
   const signInPress = async () => {
     try {
       const resp = await AuthService.login({
-        username: '01733714009',
-        password: '12345678',
+        username: username,
+        password: password,
       });
       console.log('resp:::', resp);
       if (resp?.status === 201) {

@@ -7,11 +7,11 @@ import PatientStack from './PatientStack';
 import DoctorStack from './DoctorStack';
 import LoadingStack from './LoadingStack';
 import {api} from '../config';
-import {setToken, getToken} from '../utils';
+import {setToken, getToken, removeToken} from '../utils';
 import AuthContext from '../shared/AuthContext';
 
 export default AppNavigator = () => {
-  //
+  //Auth State
   const [state, dispatch] = useReducer(
     (prevState, action) => {
       switch (action.type) {
@@ -41,7 +41,7 @@ export default AppNavigator = () => {
       userToken: null,
     },
   );
-  //
+  //Get Store Token
   useEffect(() => {
     // Fetch the token from storage then navigate to our appropriate place
     const bootstrapAsync = async () => {
@@ -56,25 +56,30 @@ export default AppNavigator = () => {
     //
     bootstrapAsync();
   }, []);
-  //
+  //Auth Method
   const authContext = useMemo(
     () => ({
       signIn: async token => {
         dispatch({type: 'SIGN_IN', token: token});
         await setToken(token);
       },
-      signOut: () => dispatch({type: 'SIGN_OUT'}),
+      signOut: async () => {
+        dispatch({type: 'SIGN_OUT'});
+        await removeToken();
+      },
       signUp: async token => {
-        dispatch({type: 'SIGN_IN', token: token});
+        dispatch({type: 'SIGN_UP', token: token});
       },
     }),
     [],
   );
-  //
+  //App Stack
   return (
     <AuthContext.Provider value={authContext}>
-      {!state.userToken ? (
+      {state.isLoading ? (
         <LoadingStack />
+      ) : !state.userToken ? (
+        <AuthStack />
       ) : state?.user?.userType === 'Doctor' ? (
         <>
           <DoctorStack />
