@@ -11,7 +11,7 @@ import {useLocale} from '../../../hooks';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 //CategoryCard
-export default function CategoryCard({navigation}) {
+export default function CategoryCard({navigation, item, index}) {
   const {translations} = useLocale();
   return (
     <TouchableOpacity style={styles.card} onPress={() => {}}>
@@ -29,7 +29,7 @@ export default function CategoryCard({navigation}) {
             fontSize: 14,
             fontFamily: fonts.bold,
           }}>
-          Cardiologists
+          {item.name}
         </Text>
         <Text
           style={{
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     marginHorizontal: 20,
-    marginVertical: 20,
+    marginVertical: 8,
     borderRadius: 8,
     borderStyle: 'solid',
     shadowColor: '#000',

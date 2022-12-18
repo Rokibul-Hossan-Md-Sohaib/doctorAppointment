@@ -1,4 +1,4 @@
-/*
+w/*
  * @@copyRight by iHealthScreen
  */
 import colors from './colors';

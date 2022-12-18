@@ -14,6 +14,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  FlatList,
 } from 'react-native';
 import PatientWrapper from '../wrapper';
 import {images, colors, routes, fonts} from '../../../config';
@@ -23,19 +24,28 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const win = Dimensions.get('window');
 import {useLocale} from '../../../hooks';
+import SpecialitiesService from '../../../services/SpecialitiesService';
 import CategoryCard from './CategoryCard';
+
 //
 export default function DoctorCategory({navigation}) {
   const {translations} = useLocale();
   const [bInit, setBInit] = useState(false);
+  const [allSpecialities, setAllSpecialities] = useState([]);
   const [searchDoc, setSearchDoc] = useState('');
   //
   useEffect(() => {
+    getSpecialities().catch();
     return () => {};
   }, []);
   //onSubmit
-  const onSubmit = () => {
+  const getSpecialities = async () => {
     try {
+      const resp = await SpecialitiesService.getAllSpecialities();
+      console.log('resp:::', resp);
+      if (resp?.status === 200) {
+        setAllSpecialities(resp?.data);
+      }
     } catch (err) {}
   };
   //
@@ -73,7 +83,20 @@ export default function DoctorCategory({navigation}) {
           />
         </View>
         <KeyboardAwareScrollView style={{flex: 1}}>
-          <CategoryCard navigation={navigation} />
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            extraData={allSpecialities}
+            data={allSpecialities}
+            renderItem={({item, index}) => {
+              return (
+                <CategoryCard
+                  navigation={navigation}
+                  item={item}
+                  index={index}
+                />
+              );
+            }}
+          />
         </KeyboardAwareScrollView>
       </PatientWrapper>
     );

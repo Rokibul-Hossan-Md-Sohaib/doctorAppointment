@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>912576884713-krh6cuc5jfeh9s9csr1tvl1mauvp447q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.912576884713-krh6cuc5jfeh9s9csr1tvl1mauvp447q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDy9RHEbAyh_OxCNt2YkCLB0jGEBOXTmy8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>912576884713</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ihsinc.myHealth</string>
+	<key>PROJECT_ID</key>
+	<string>telemed-ihs</string>
+	<key>STORAGE_BUCKET</key>
+	<string>telemed-ihs.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:912576884713:ios:312effed4eeff1ca4b6578</string>
+	<key>DATABASE_URL</key>
+	<string>https://telemed-ihs.firebaseio.com</string>
+</dict>
+</plist>
