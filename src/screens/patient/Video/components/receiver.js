@@ -1,11 +1,10 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
-import { View, Text, Image } from 'react-native';
-import { metrics } from '../../../config';
-import { RTCView } from 'react-native-webrtc';
-import { colors } from '../../../config';
-import { Icon, Rating, Avatar } from 'react-native-elements';
-const { width, height } = Dimensions.get('screen');
+import {Dimensions} from 'react-native';
+import {View, Text, Image} from 'react-native';
+// import { metrics } from '../../../config';
+import {RTCView} from 'react-native-webrtc';
+import {colors} from '../../../config';
+const {width, height} = Dimensions.get('screen');
 
 // let seconds = 0;
 // let minutes = 0;
@@ -51,13 +50,13 @@ const Receiver = ({
                 alignItems: 'center',
                 paddingTop: 100,
               }}>
-              <Avatar
+              {/* <Avatar
                 size={150}
                 rounded
-                source={{ uri: `${receiverImage}` }}
+                source={{uri: `${receiverImage}`}}
                 // title="MT"
                 activeOpacity={0.9}
-              />
+              /> */}
             </View>
           )}
         </>
@@ -73,18 +72,25 @@ const Receiver = ({
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Text style={{ color: colors.WHITE, fontSize: 25 }}>connecting</Text>
+              <Text style={{color: colors.WHITE, fontSize: 25}}>
+                connecting
+              </Text>
             </View>
           ) : (
             <View
-              style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 100 }}>
-              <Avatar
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingTop: 100,
+              }}>
+              {/* <Avatar
                 size={150}
                 rounded
-                source={{ uri: `${receiverImage}` }}
+                source={{uri: `${receiverImage}`}}
                 // title="MT"
                 activeOpacity={0.9}
-              />
+              /> */}
             </View>
           )}
         </>

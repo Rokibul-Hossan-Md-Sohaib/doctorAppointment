@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Button } from 'react-native';
-import IconButton from './iconButton';
 import { TouchableOpacity } from 'react-native';
 import { colors } from '../../../../config';
 import { IconWithRoundedBackground } from '../../../../components';
