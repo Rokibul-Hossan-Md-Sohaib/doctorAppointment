@@ -175,7 +175,7 @@ export default function DoctorCard({
           </View>
         )}
       </View>
-      {fav && (
+      {fav  && (
         <TouchableOpacity
           onPress={() => {}}
           style={{alignItems: 'flex-end', flex: 1}}>
